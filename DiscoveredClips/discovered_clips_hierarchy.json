@@ -1,0 +1,2401 @@
+﻿{
+  "ambience": {
+    "breaker": {
+      "global04": {
+        "name": "ambience breaker global04"
+      },
+      "global08": {
+        "name": "ambience breaker global08"
+      },
+      "global11": {
+        "name": "ambience breaker global11"
+      },
+      "global14": {
+        "name": "ambience breaker global14"
+      },
+      "manor01": {
+        "name": "ambience breaker manor01"
+      },
+      "manor10": {
+        "name": "ambience breaker manor10"
+      },
+      "manor11": {
+        "name": "ambience breaker manor11"
+      },
+      "manor12": {
+        "name": "ambience breaker manor12"
+      },
+      "museum01": {
+        "name": "ambience breaker museum01"
+      },
+      "museum07": {
+        "name": "ambience breaker museum07"
+      },
+      "museum17": {
+        "name": "ambience breaker museum17"
+      },
+      "wizard01": {
+        "name": "ambience breaker wizard01"
+      },
+      "wizard02": {
+        "name": "ambience breaker wizard02"
+      },
+      "wizard03": {
+        "name": "ambience breaker wizard03"
+      },
+      "wizard05": {
+        "name": "ambience breaker wizard05"
+      }
+    },
+    "loop": {
+      "creep": {
+        "whisper": {
+          "close": {
+            "name": "Ambience Loop Creep Whisper Close"
+          }
+        }
+      },
+      "manor": {
+        "default": {
+          "name": "Ambience Loop Manor Default"
+        },
+        "outside": {
+          "crickets": {
+            "name": "Ambience Loop Manor Outside Crickets"
+          }
+        }
+      },
+      "museum": {
+        "maint": {
+          "name": "Ambience Loop Museum Maint"
+        },
+        "maintenance": {
+          "tunnel": {
+            "name": "Ambience Loop Museum Maintenance Tunnel"
+          }
+        },
+        "outsidet": {
+          "name": "Ambience Loop Museum Outsidet"
+        }
+      },
+      "truck": {
+        "driving": {
+          "name": "Ambience Loop Truck Driving"
+        }
+      },
+      "wizard": {
+        "default": {
+          "name": "Ambience Loop Wizard Default"
+        }
+      }
+    }
+  },
+  "arena": {
+    "music": {
+      "everyone": {
+        "loser": {
+          "temp": {
+            "name": "arena_music_everyone_loser_temp"
+          }
+        }
+      },
+      "temp": {
+        "name": "arena_music_temp"
+      }
+    }
+  },
+  "basket": {
+    "ball": {
+      "break": {
+        "heavy02": {
+          "name": "Basket Ball - Break - Heavy02"
+        },
+        "medium01": {
+          "name": "Basket Ball - Break - Medium01"
+        }
+      },
+      "destroy01": {
+        "name": "Basket Ball - Destroy01"
+      },
+      "impact": {
+        "heavy01": {
+          "name": "Basket Ball - Impact - Heavy01"
+        },
+        "light02": {
+          "name": "Basket Ball - Impact - Light02"
+        },
+        "medium01": {
+          "name": "Basket Ball - Impact - Medium01"
+        },
+        "medium02": {
+          "name": "Basket Ball - Impact - Medium02"
+        }
+      }
+    }
+  },
+  "boombox": {
+    "music": {
+      "local": {
+        "name": "boombox music local"
+      }
+    }
+  },
+  "bottle": {
+    "pack": {
+      "destroy02": {
+        "name": "Bottle Pack - Destroy02"
+      },
+      "destroy03": {
+        "name": "Bottle Pack - Destroy03"
+      }
+    }
+  },
+  "camera": {
+    "glitch": {
+      "long01": {
+        "name": "camera glitch long01"
+      },
+      "long02": {
+        "name": "camera glitch long02"
+      },
+      "long03": {
+        "name": "camera glitch long03"
+      },
+      "long04": {
+        "name": "camera glitch long04"
+      },
+      "long05": {
+        "name": "camera glitch long05"
+      },
+      "short01": {
+        "name": "camera glitch short01"
+      },
+      "short02": {
+        "name": "camera glitch short02"
+      },
+      "short03": {
+        "name": "camera glitch short03"
+      },
+      "short04": {
+        "name": "camera glitch short04"
+      },
+      "short05": {
+        "name": "camera glitch short05"
+      }
+    },
+    "intro": {
+      "run": {
+        "name": "camera intro run"
+      },
+      "name": "camera intro"
+    },
+    "outro": {
+      "run": {
+        "name": "camera outro run"
+      },
+      "name": "camera outro"
+    }
+  },
+  "ceramic": {
+    "medium": {
+      "break": {
+        "heavy01": {
+          "name": "Ceramic Medium - Break - Heavy01"
+        },
+        "heavy03": {
+          "name": "Ceramic Medium - Break - Heavy03"
+        },
+        "light01": {
+          "name": "Ceramic Medium - Break - Light01"
+        }
+      },
+      "destroy02": {
+        "name": "Ceramic Medium - Destroy02"
+      },
+      "destroy03": {
+        "name": "Ceramic Medium - Destroy03"
+      },
+      "impact": {
+        "heavy02": {
+          "name": "Ceramic Medium - Impact - Heavy02"
+        },
+        "light01": {
+          "name": "Ceramic Medium - Impact - Light01"
+        },
+        "light02": {
+          "name": "Ceramic Medium - Impact - Light02"
+        },
+        "medium01": {
+          "name": "Ceramic Medium - Impact - Medium01"
+        }
+      }
+    },
+    "small": {
+      "destroy03": {
+        "name": "Ceramic Small - Destroy03"
+      }
+    }
+  },
+  "champagne": {
+    "loop": {
+      "name": "champagne loop"
+    }
+  },
+  "charging": {
+    "station": {
+      "loop": {
+        "name": "charging station loop"
+      }
+    }
+  },
+  "cosmetic": {
+    "world": {
+      "object": {
+        "heal": {
+          "blink": {
+            "name": "cosmetic world object heal blink"
+          }
+        },
+        "ring": {
+          "move01": {
+            "name": "cosmetic world object ring move01"
+          },
+          "move02": {
+            "name": "cosmetic world object ring move02"
+          },
+          "move03": {
+            "name": "cosmetic world object ring move03"
+          }
+        }
+      }
+    }
+  },
+  "door": {
+    "close01": {
+      "name": "door close01"
+    },
+    "close02": {
+      "name": "door close02"
+    },
+    "close03": {
+      "name": "door close03"
+    },
+    "creak": {
+      "end01": {
+        "name": "door creak end01"
+      },
+      "end02": {
+        "name": "door creak end02"
+      },
+      "end03": {
+        "name": "door creak end03"
+      },
+      "loop": {
+        "name": "door creak loop"
+      }
+    },
+    "explode02": {
+      "name": "door explode02"
+    },
+    "hinge": {
+      "break01": {
+        "name": "door hinge break01"
+      }
+    },
+    "hit01": {
+      "name": "door hit01"
+    },
+    "hit02": {
+      "name": "door hit02"
+    },
+    "hit03": {
+      "name": "door hit03"
+    },
+    "hit04": {
+      "name": "door hit04"
+    },
+    "open01": {
+      "name": "door open01"
+    },
+    "open02": {
+      "name": "door open02"
+    },
+    "open03": {
+      "name": "door open03"
+    },
+    "sprint": {
+      "open01": {
+        "name": "door sprint open01"
+      }
+    }
+  },
+  "drone": {
+    "close": {
+      "name": "Drone Close"
+    }
+  },
+  "enemy": {
+    "beamer": {
+      "laser": {
+        "hit": {
+          "loop": {
+            "name": "enemy beamer laser hit loop"
+          }
+        }
+      }
+    },
+    "birthday": {
+      "boy": {
+        "breathing": {
+          "attack": {
+            "loop": {
+              "name": "enemy birthday boy breathing attack loop"
+            }
+          },
+          "loop": {
+            "name": "enemy birthday boy breathing loop"
+          },
+          "run": {
+            "loop": {
+              "name": "enemy birthday boy breathing run loop"
+            }
+          }
+        },
+        "idle": {
+          "breaker02": {
+            "name": "enemy birthday boy idle breaker02"
+          }
+        },
+        "move": {
+          "long02": {
+            "name": "enemy birthday boy move long02"
+          }
+        },
+        "move01": {
+          "name": "enemy birthday boy move01"
+        },
+        "move02": {
+          "name": "enemy birthday boy move02"
+        },
+        "move03": {
+          "name": "enemy birthday boy move03"
+        },
+        "neck": {
+          "crack02": {
+            "name": "enemy birthday boy neck crack02"
+          }
+        }
+      }
+    },
+    "ceiling": {
+      "eye": {
+        "despawn": {
+          "name": "enemy ceiling eye despawn"
+        },
+        "stare": {
+          "loop": {
+            "twitching": {
+              "name": "enemy ceiling eye stare loop twitching"
+            }
+          }
+        },
+        "staring": {
+          "loop": {
+            "name": "enemy ceiling eye staring loop"
+          }
+        }
+      }
+    },
+    "duck": {
+      "attack": {
+        "loop": {
+          "name": "enemy duck attack loop"
+        }
+      },
+      "fly": {
+        "loop": {
+          "name": "enemy duck fly loop"
+        }
+      },
+      "footstep01": {
+        "name": "enemy duck footstep01"
+      },
+      "footstep02": {
+        "name": "enemy duck footstep02"
+      },
+      "footstep03": {
+        "name": "enemy duck footstep03"
+      },
+      "quack01": {
+        "name": "enemy duck quack01"
+      },
+      "quack02": {
+        "name": "enemy duck quack02"
+      },
+      "quack03": {
+        "name": "enemy duck quack03"
+      },
+      "stun": {
+        "end02": {
+          "name": "enemy duck stun end02"
+        },
+        "loop": {
+          "name": "enemy duck stun loop"
+        }
+      }
+    },
+    "elsa": {
+      "big": {
+        "heavy": {
+          "panting": {
+            "name": "enemy elsa big heavy panting"
+          }
+        }
+      },
+      "fly": {
+        "loop": {
+          "name": "enemy elsa fly loop"
+        }
+      },
+      "small": {
+        "bark": {
+          "happy02": {
+            "name": "enemy elsa small bark happy02"
+          }
+        },
+        "footstep01": {
+          "name": "enemy elsa small footstep01"
+        },
+        "footstep02": {
+          "name": "enemy elsa small footstep02"
+        },
+        "footstep03": {
+          "name": "enemy elsa small footstep03"
+        },
+        "footstep04": {
+          "name": "enemy elsa small footstep04"
+        },
+        "footstep05": {
+          "name": "enemy elsa small footstep05"
+        },
+        "footstep06": {
+          "name": "enemy elsa small footstep06"
+        },
+        "panting": {
+          "normal": {
+            "name": "enemy elsa small panting normal"
+          }
+        },
+        "stun": {
+          "loop": {
+            "name": "enemy elsa small stun loop"
+          }
+        }
+      }
+    },
+    "gnome": {
+      "death01": {
+        "name": "enemy gnome death01"
+      },
+      "death02": {
+        "name": "enemy gnome death02"
+      },
+      "death03": {
+        "name": "enemy gnome death03"
+      },
+      "footstep01": {
+        "name": "enemy gnome footstep01"
+      },
+      "footstep02": {
+        "name": "enemy gnome footstep02"
+      },
+      "footstep03": {
+        "name": "enemy gnome footstep03"
+      },
+      "hurt02": {
+        "name": "enemy gnome hurt02"
+      },
+      "idle": {
+        "break01": {
+          "name": "enemy gnome idle break01"
+        },
+        "break02": {
+          "name": "enemy gnome idle break02"
+        },
+        "break03": {
+          "name": "enemy gnome idle break03"
+        }
+      },
+      "jump": {
+        "name": "enemy gnome jump"
+      },
+      "land": {
+        "name": "enemy gnome land"
+      },
+      "move": {
+        "long01": {
+          "name": "enemy gnome move long01"
+        },
+        "long02": {
+          "name": "enemy gnome move long02"
+        },
+        "long03": {
+          "name": "enemy gnome move long03"
+        },
+        "short01": {
+          "name": "enemy gnome move short01"
+        },
+        "short02": {
+          "name": "enemy gnome move short02"
+        },
+        "short03": {
+          "name": "enemy gnome move short03"
+        }
+      },
+      "notice01": {
+        "name": "enemy gnome notice01"
+      },
+      "notice02": {
+        "name": "enemy gnome notice02"
+      },
+      "notice03": {
+        "name": "enemy gnome notice03"
+      },
+      "pickaxe": {
+        "hit": {
+          "name": "enemy gnome pickaxe hit"
+        },
+        "tell": {
+          "name": "enemy gnome pickaxe tell"
+        }
+      },
+      "stun": {
+        "end01": {
+          "name": "enemy gnome stun end01"
+        },
+        "fly": {
+          "name": "enemy gnome stun fly"
+        },
+        "start01": {
+          "name": "enemy gnome stun start01"
+        },
+        "start02": {
+          "name": "enemy gnome stun start02"
+        },
+        "start03": {
+          "name": "enemy gnome stun start03"
+        }
+      }
+    },
+    "hunter": {
+      "aim": {
+        "start": {
+          "global01": {
+            "name": "enemy hunter aim start global01"
+          },
+          "global02": {
+            "name": "enemy hunter aim start global02"
+          },
+          "global03": {
+            "name": "enemy hunter aim start global03"
+          }
+        },
+        "start01": {
+          "name": "enemy hunter aim start01"
+        },
+        "start02": {
+          "name": "enemy hunter aim start02"
+        },
+        "start03": {
+          "name": "enemy hunter aim start03"
+        }
+      },
+      "footstep": {
+        "slow01": {
+          "name": "enemy hunter footstep slow01"
+        },
+        "slow02": {
+          "name": "enemy hunter footstep slow02"
+        },
+        "slow03": {
+          "name": "enemy hunter footstep slow03"
+        }
+      },
+      "footstep01": {
+        "name": "enemy hunter footstep01"
+      },
+      "footstep02": {
+        "name": "enemy hunter footstep02"
+      },
+      "footstep03": {
+        "name": "enemy hunter footstep03"
+      },
+      "humming": {
+        "loop": {
+          "name": "enemy hunter humming loop"
+        }
+      },
+      "hurt01": {
+        "name": "enemy hunter hurt01"
+      },
+      "hurt02": {
+        "name": "enemy hunter hurt02"
+      },
+      "hurt03": {
+        "name": "enemy hunter hurt03"
+      },
+      "leave": {
+        "start01": {
+          "name": "enemy hunter leave start01"
+        },
+        "start02": {
+          "name": "enemy hunter leave start02"
+        },
+        "start03": {
+          "name": "enemy hunter leave start03"
+        }
+      },
+      "move": {
+        "gun": {
+          "long01": {
+            "name": "enemy hunter move gun long01"
+          },
+          "long02": {
+            "name": "enemy hunter move gun long02"
+          },
+          "long03": {
+            "name": "enemy hunter move gun long03"
+          },
+          "short01": {
+            "name": "enemy hunter move gun short01"
+          },
+          "short02": {
+            "name": "enemy hunter move gun short02"
+          },
+          "short03": {
+            "name": "enemy hunter move gun short03"
+          }
+        },
+        "long01": {
+          "name": "enemy hunter move long01"
+        },
+        "long02": {
+          "name": "enemy hunter move long02"
+        },
+        "long03": {
+          "name": "enemy hunter move long03"
+        },
+        "short01": {
+          "name": "enemy hunter move short01"
+        },
+        "short02": {
+          "name": "enemy hunter move short02"
+        },
+        "short03": {
+          "name": "enemy hunter move short03"
+        }
+      },
+      "reload01": {
+        "name": "enemy hunter reload01"
+      },
+      "reload02": {
+        "name": "enemy hunter reload02"
+      },
+      "ricochet01": {
+        "name": "enemy hunter ricochet01"
+      },
+      "ricochet02": {
+        "name": "enemy hunter ricochet02"
+      },
+      "ricochet03": {
+        "name": "enemy hunter ricochet03"
+      },
+      "shoot": {
+        "global": {
+          "name": "enemy hunter shoot global"
+        },
+        "name": "enemy hunter shoot"
+      }
+    },
+    "near": {
+      "01": {
+        "name": "Enemy Near 01"
+      },
+      "02": {
+        "name": "Enemy Near 02"
+      },
+      "03": {
+        "name": "Enemy Near 03"
+      },
+      "04": {
+        "name": "Enemy Near 04"
+      },
+      "05": {
+        "name": "Enemy Near 05"
+      },
+      "06": {
+        "name": "Enemy Near 06"
+      },
+      "07": {
+        "name": "Enemy Near 07"
+      },
+      "08": {
+        "name": "Enemy Near 08"
+      }
+    },
+    "slow": {
+      "mouth": {
+        "attach": {
+          "to": {
+            "face": {
+              "vo01": {
+                "name": "enemy slow mouth attach to face vo01"
+              },
+              "name": "enemy slow mouth attach to face"
+            }
+          }
+        },
+        "chase": {
+          "loop": {
+            "name": "enemy slow mouth chase loop"
+          }
+        },
+        "detach": {
+          "from": {
+            "face": {
+              "name": "enemy slow mouth detach from face"
+            }
+          },
+          "to": {
+            "face": {
+              "vo03": {
+                "name": "enemy slow mouth detach to face vo03"
+              }
+            }
+          }
+        },
+        "puke": {
+          "loop": {
+            "name": "enemy slow mouth puke loop"
+          }
+        },
+        "roam": {
+          "vo05": {
+            "name": "enemy slow mouth roam vo05"
+          }
+        },
+        "stun": {
+          "loop": {
+            "name": "enemy slow mouth stun loop"
+          }
+        }
+      },
+      "walker": {
+        "footstep01": {
+          "name": "enemy slow walker footstep01"
+        },
+        "footstep02": {
+          "name": "enemy slow walker footstep02"
+        },
+        "footstep03": {
+          "name": "enemy slow walker footstep03"
+        },
+        "move": {
+          "long01": {
+            "name": "enemy slow walker move long01"
+          },
+          "long02": {
+            "name": "enemy slow walker move long02"
+          },
+          "long03": {
+            "name": "enemy slow walker move long03"
+          },
+          "short02": {
+            "name": "enemy slow walker move short02"
+          }
+        },
+        "noise": {
+          "long01": {
+            "name": "enemy slow walker noise long01"
+          },
+          "long02": {
+            "name": "enemy slow walker noise long02"
+          },
+          "short01": {
+            "name": "enemy slow walker noise short01"
+          }
+        },
+        "notice": {
+          "vo03": {
+            "name": "enemy slow walker notice vo03"
+          }
+        },
+        "stun": {
+          "name": "enemy slow walker stun"
+        },
+        "trailing": {
+          "mace01": {
+            "name": "enemy slow walker trailing mace01"
+          },
+          "mace02": {
+            "name": "enemy slow walker trailing mace02"
+          },
+          "mace05": {
+            "name": "enemy slow walker trailing mace05"
+          },
+          "mace06": {
+            "name": "enemy slow walker trailing mace06"
+          }
+        }
+      }
+    },
+    "thin": {
+      "man": {
+        "notice02": {
+          "name": "enemy thin man notice02"
+        },
+        "teleport": {
+          "in": {
+            "name": "enemy thin man teleport in"
+          },
+          "out": {
+            "name": "enemy thin man teleport out"
+          }
+        },
+        "tentacle": {
+          "grow": {
+            "loop": {
+              "name": "enemy thin man tentacle grow loop"
+            }
+          }
+        }
+      }
+    },
+    "tick": {
+      "big": {
+        "suck02": {
+          "name": "enemy tick big suck02"
+        }
+      },
+      "notice01": {
+        "name": "enemy tick notice01"
+      },
+      "running": {
+        "loop": {
+          "name": "enemy tick running loop"
+        }
+      },
+      "skittering": {
+        "loop": {
+          "name": "enemy tick skittering loop"
+        }
+      },
+      "sucking": {
+        "loop": {
+          "name": "enemy tick sucking loop"
+        }
+      },
+      "walking": {
+        "loop": {
+          "name": "enemy tick walking loop"
+        }
+      }
+    },
+    "tricycle": {
+      "attack": {
+        "loop": {
+          "name": "enemy tricycle attack loop"
+        }
+      },
+      "bell02": {
+        "name": "enemy tricycle bell02"
+      },
+      "glitch": {
+        "in": {
+          "name": "enemy tricycle glitch in"
+        }
+      },
+      "idle01": {
+        "name": "enemy tricycle idle01"
+      },
+      "idle02": {
+        "name": "enemy tricycle idle02"
+      },
+      "idle03": {
+        "name": "enemy tricycle idle03"
+      },
+      "move01": {
+        "name": "enemy tricycle move01"
+      },
+      "move02": {
+        "name": "enemy tricycle move02"
+      },
+      "move03": {
+        "name": "enemy tricycle move03"
+      },
+      "stun": {
+        "loop": {
+          "name": "enemy tricycle stun loop"
+        }
+      },
+      "wheel": {
+        "rattle": {
+          "loop": {
+            "name": "enemy tricycle wheel rattle loop"
+          }
+        },
+        "squeak": {
+          "loop": {
+            "name": "enemy tricycle wheel squeak loop"
+          }
+        }
+      }
+    }
+  },
+  "explosion": {
+    "generic": {
+      "big": {
+        "global02": {
+          "name": "explosion generic big global02"
+        }
+      },
+      "big01": {
+        "name": "explosion generic big01"
+      },
+      "big02": {
+        "name": "explosion generic big02"
+      },
+      "big03": {
+        "name": "explosion generic big03"
+      }
+    }
+  },
+  "extraction": {
+    "point": {
+      "activate01": {
+        "name": "extraction point activate01"
+      },
+      "activate02": {
+        "name": "extraction point activate02"
+      },
+      "activate03": {
+        "name": "extraction point activate03"
+      },
+      "button": {
+        "press": {
+          "name": "extraction point button press"
+        }
+      },
+      "emoji": {
+        "glitch": {
+          "name": "extraction point emoji glitch"
+        }
+      },
+      "jingle": {
+        "2": {
+          "global": {
+            "name": "extraction point jingle 2 global"
+          },
+          "local": {
+            "name": "extraction point jingle 2 local"
+          }
+        }
+      },
+      "locator": {
+        "ping": {
+          "name": "extraction point locator ping"
+        }
+      },
+      "spinning": {
+        "lights": {
+          "loop": {
+            "name": "extraction point spinning lights loop"
+          }
+        }
+      },
+      "suck": {
+        "loop2": {
+          "name": "extraction point suck loop2"
+        }
+      },
+      "surplus": {
+        "deduction": {
+          "loop": {
+            "name": "extraction point surplus deduction loop"
+          }
+        },
+        "increase": {
+          "loop": {
+            "name": "extraction point surplus increase loop"
+          }
+        }
+      },
+      "tube": {
+        "hit": {
+          "ceiling": {
+            "global": {
+              "name": "extraction point tube hit ceiling global"
+            },
+            "name": "extraction point tube hit ceiling"
+          }
+        },
+        "raise": {
+          "global": {
+            "name": "extraction point tube raise global"
+          },
+          "name": "extraction point tube raise"
+        },
+        "retract": {
+          "name": "extraction point tube retract"
+        }
+      }
+    }
+  },
+  "fire": {
+    "loop": {
+      "name": "fire loop"
+    }
+  },
+  "flashlightoff": {
+    "name": "FlashlightOff"
+  },
+  "flashlighton": {
+    "name": "FlashlightOn"
+  },
+  "footstep": {
+    "broken": {
+      "tiles": {
+        "heavy01": {
+          "name": "footstep broken tiles heavy01"
+        },
+        "medium01": {
+          "name": "footstep broken tiles medium01"
+        },
+        "medium02": {
+          "name": "footstep broken tiles medium02"
+        },
+        "medium03": {
+          "name": "footstep broken tiles medium03"
+        }
+      }
+    },
+    "catwalk": {
+      "heavy01": {
+        "name": "footstep catwalk heavy01"
+      },
+      "heavy02": {
+        "name": "footstep catwalk heavy02"
+      },
+      "heavy03": {
+        "name": "footstep catwalk heavy03"
+      },
+      "medium01": {
+        "name": "footstep catwalk medium01"
+      },
+      "medium02": {
+        "name": "footstep catwalk medium02"
+      },
+      "medium03": {
+        "name": "footstep catwalk medium03"
+      }
+    },
+    "gravel": {
+      "light01": {
+        "name": "footstep gravel light01"
+      },
+      "light02": {
+        "name": "footstep gravel light02"
+      },
+      "light03": {
+        "name": "footstep gravel light03"
+      }
+    },
+    "rubble": {
+      "medium02": {
+        "name": "footstep rubble medium02"
+      }
+    },
+    "rug": {
+      "light01": {
+        "name": "footstep rug light01"
+      },
+      "light02": {
+        "name": "footstep rug light02"
+      },
+      "light03": {
+        "name": "footstep rug light03"
+      }
+    },
+    "stone": {
+      "light01": {
+        "name": "footstep stone light01"
+      },
+      "light02": {
+        "name": "footstep stone light02"
+      },
+      "light03": {
+        "name": "footstep stone light03"
+      },
+      "medium01": {
+        "name": "footstep stone medium01"
+      },
+      "medium02": {
+        "name": "footstep stone medium02"
+      },
+      "medium03": {
+        "name": "footstep stone medium03"
+      },
+      "medium04": {
+        "name": "footstep stone medium04"
+      },
+      "medium05": {
+        "name": "footstep stone medium05"
+      }
+    },
+    "tile": {
+      "light01": {
+        "name": "footstep tile  light01"
+      },
+      "medium02": {
+        "name": "footstep tile medium02"
+      }
+    },
+    "water": {
+      "heavy02": {
+        "name": "footstep water heavy02"
+      },
+      "heavy03": {
+        "name": "footstep water heavy03"
+      },
+      "light01": {
+        "name": "footstep water light01"
+      },
+      "light03": {
+        "name": "footstep water light03"
+      }
+    },
+    "wood": {
+      "heavy01": {
+        "name": "footstep wood heavy01"
+      },
+      "heavy02": {
+        "name": "footstep wood heavy02"
+      },
+      "heavy03": {
+        "name": "footstep wood heavy03"
+      },
+      "heavy04": {
+        "name": "footstep wood heavy04"
+      },
+      "heavy05": {
+        "name": "footstep wood heavy05"
+      },
+      "heavy06": {
+        "name": "footstep wood heavy06"
+      },
+      "light01": {
+        "name": "footstep wood light01"
+      },
+      "light02": {
+        "name": "footstep wood light02"
+      },
+      "light03": {
+        "name": "footstep wood light03"
+      },
+      "light04": {
+        "name": "footstep wood light04"
+      },
+      "light05": {
+        "name": "footstep wood light05"
+      },
+      "light06": {
+        "name": "footstep wood light06"
+      },
+      "medium01": {
+        "name": "footstep wood medium01"
+      },
+      "medium02": {
+        "name": "footstep wood medium02"
+      },
+      "medium03": {
+        "name": "footstep wood medium03"
+      },
+      "medium04": {
+        "name": "footstep wood medium04"
+      },
+      "medium05": {
+        "name": "footstep wood medium05"
+      },
+      "medium06": {
+        "name": "footstep wood medium06"
+      }
+    }
+  },
+  "fridge": {
+    "loop": {
+      "name": "fridge loop"
+    }
+  },
+  "geiger": {
+    "big": {
+      "loop": {
+        "name": "geiger big loop"
+      }
+    },
+    "loop": {
+      "name": "geiger loop"
+    }
+  },
+  "gem": {
+    "burger": {
+      "destroy01": {
+        "name": "Gem Burger - Destroy01"
+      }
+    }
+  },
+  "generic": {
+    "phys": {
+      "impact02": {
+        "name": "generic phys impact02"
+      }
+    }
+  },
+  "glass": {
+    "liquid": {
+      "big": {
+        "destroy01": {
+          "name": "Glass Liquid Big - Destroy01"
+        }
+      },
+      "medium": {
+        "destroy02": {
+          "name": "Glass Liquid Medium - Destroy02"
+        },
+        "destroy03": {
+          "name": "Glass Liquid Medium - Destroy03"
+        }
+      }
+    },
+    "medium": {
+      "break": {
+        "heavy03": {
+          "name": "Glass Medium - Break - Heavy03"
+        },
+        "medium03": {
+          "name": "Glass Medium - Break - Medium03"
+        }
+      },
+      "destroy03": {
+        "name": "Glass Medium - Destroy03"
+      },
+      "impact": {
+        "heavy03": {
+          "name": "Glass Medium - Impact - Heavy03"
+        },
+        "light01": {
+          "name": "Glass Medium - Impact - Light01"
+        },
+        "light03": {
+          "name": "Glass Medium - Impact - Light03"
+        }
+      }
+    }
+  },
+  "gnome": {
+    "destroy03": {
+      "name": "Gnome - Destroy03"
+    },
+    "impact": {
+      "heavy01": {
+        "name": "Gnome - Impact - Heavy01"
+      },
+      "heavy02": {
+        "name": "Gnome - Impact - Heavy02"
+      },
+      "heavy03": {
+        "name": "Gnome - Impact - Heavy03"
+      },
+      "light01": {
+        "name": "Gnome - Impact - Light01"
+      },
+      "light03": {
+        "name": "Gnome - Impact - Light03"
+      },
+      "medium01": {
+        "name": "Gnome - Impact - Medium01"
+      }
+    }
+  },
+  "gramophone": {
+    "music": {
+      "name": "gramophone music"
+    }
+  },
+  "headman": {
+    "chase": {
+      "loop": {
+        "2": {
+          "name": "headman chase loop 2"
+        },
+        "name": "headman chase loop"
+      },
+      "to": {
+        "idle": {
+          "name": "headman chase to idle"
+        }
+      }
+    },
+    "spawn": {
+      "name": "headman spawn"
+    },
+    "teeth": {
+      "chatter01": {
+        "name": "headman teeth chatter01"
+      },
+      "chatter02": {
+        "name": "headman teeth chatter02"
+      },
+      "chatter03": {
+        "name": "headman teeth chatter03"
+      },
+      "chatter04": {
+        "name": "headman teeth chatter04"
+      },
+      "chatter05": {
+        "name": "headman teeth chatter05"
+      }
+    }
+  },
+  "heavy": {
+    "water": {
+      "destroy01": {
+        "name": "Heavy Water - Destroy01"
+      }
+    }
+  },
+  "item": {
+    "vehicle": {
+      "drifting": {
+        "loop": {
+          "name": "item vehicle drifting loop"
+        }
+      }
+    }
+  },
+  "level": {
+    "music": {
+      "manor": {
+        "03": {
+          "2": {
+            "name": "Level Music - Manor - 03 #2"
+          }
+        }
+      }
+    }
+  },
+  "loading": {
+    "ui": {
+      "crash": {
+        "name": "loading ui crash"
+      },
+      "rev": {
+        "up": {
+          "name": "loading ui rev up"
+        }
+      },
+      "text": {
+        "level": {
+          "name": "loading ui text level"
+        },
+        "name": {
+          "name": "loading ui text name"
+        }
+      },
+      "turn": {
+        "name": "loading ui turn"
+      }
+    }
+  },
+  "material": {
+    "impact": {
+      "rug": {
+        "heavy01": {
+          "name": "material impact rug heavy01"
+        },
+        "heavy02": {
+          "name": "material impact rug heavy02"
+        },
+        "heavy03": {
+          "name": "material impact rug heavy03"
+        },
+        "light01": {
+          "name": "material impact rug light01"
+        }
+      },
+      "stone": {
+        "heavy01": {
+          "name": "material impact stone heavy01"
+        },
+        "heavy02": {
+          "name": "material impact stone heavy02"
+        },
+        "heavy03": {
+          "name": "material impact stone heavy03"
+        },
+        "light01": {
+          "name": "material impact stone light01"
+        },
+        "light02": {
+          "name": "material impact stone light02"
+        },
+        "medium01": {
+          "name": "material impact stone medium01"
+        },
+        "medium02": {
+          "name": "material impact stone medium02"
+        },
+        "medium03": {
+          "name": "material impact stone medium03"
+        }
+      },
+      "wood": {
+        "heavy01": {
+          "name": "material impact wood heavy01"
+        },
+        "heavy02": {
+          "name": "material impact wood heavy02"
+        },
+        "heavy03": {
+          "name": "material impact wood heavy03"
+        },
+        "light01": {
+          "name": "material impact wood light01"
+        },
+        "light02": {
+          "name": "material impact wood light02"
+        },
+        "medium02": {
+          "name": "material impact wood medium02"
+        },
+        "medium03": {
+          "name": "material impact wood medium03"
+        }
+      }
+    },
+    "slide": {
+      "rug02": {
+        "name": "material slide rug02"
+      },
+      "stone": {
+        "loop": {
+          "name": "material slide stone loop"
+        }
+      },
+      "stone02": {
+        "name": "material slide stone02"
+      },
+      "stone03": {
+        "name": "material slide stone03"
+      },
+      "wood01": {
+        "name": "material slide wood01"
+      },
+      "wood02": {
+        "name": "material slide wood02"
+      }
+    },
+    "wood": {
+      "rare01": {
+        "name": "material_wood rare01"
+      },
+      "rare02": {
+        "name": "material_wood rare02"
+      },
+      "rare03": {
+        "name": "material_wood rare03"
+      }
+    }
+  },
+  "menu": {
+    "action": {
+      "name": "menu action"
+    },
+    "hover": {
+      "name": "menu hover"
+    },
+    "page": {
+      "close": {
+        "name": "menu page close"
+      },
+      "outro": {
+        "name": "menu page outro"
+      }
+    },
+    "truck": {
+      "engine": {
+        "loop": {
+          "name": "menu truck engine loop"
+        }
+      },
+      "slow": {
+        "down": {
+          "name": "menu truck slow down"
+        }
+      },
+      "speed": {
+        "up": {
+          "name": "menu truck speed up"
+        }
+      }
+    }
+  },
+  "metal": {
+    "hollow": {
+      "big": {
+        "destroy01": {
+          "name": "Metal hollow Big - Destroy01"
+        },
+        "destroy03": {
+          "name": "Metal hollow Big - Destroy03"
+        },
+        "impact": {
+          "medium02": {
+            "name": "Metal hollow Big - Impact - Medium02"
+          }
+        }
+      },
+      "medium": {
+        "destroy02": {
+          "name": "Metal hollow Medium - Destroy02"
+        },
+        "destroy03": {
+          "name": "Metal hollow Medium - Destroy03"
+        },
+        "impact": {
+          "heavy01": {
+            "name": "Metal hollow Medium - Impact - Heavy01"
+          },
+          "light01": {
+            "name": "Metal hollow Medium - Impact - Light01"
+          },
+          "light03": {
+            "name": "Metal hollow Medium - Impact - Light03"
+          }
+        }
+      },
+      "small": {
+        "destroy02": {
+          "name": "Metal hollow Small - Destroy02"
+        },
+        "destroy03": {
+          "name": "Metal hollow Small - Destroy03"
+        }
+      }
+    }
+  },
+  "msc": {
+    "main": {
+      "menu": {
+        "name": "msc main menu"
+      }
+    },
+    "player": {
+      "do": {
+        "not": {
+          "look": {
+            "at": {
+              "name": "msc player do not look at"
+            }
+          }
+        }
+      }
+    }
+  },
+  "museum": {
+    "storage": {
+      "door": {
+        "open02": {
+          "name": "museum storage door open02"
+        },
+        "open03": {
+          "name": "museum storage door open03"
+        }
+      }
+    }
+  },
+  "phys": {
+    "grabber": {
+      "loop": {
+        "name": "phys grabber loop"
+      },
+      "off01": {
+        "name": "phys grabber off01"
+      },
+      "on01": {
+        "name": "phys grabber on01"
+      },
+      "rotate": {
+        "loop": {
+          "name": "phys grabber rotate loop"
+        }
+      }
+    }
+  },
+  "physics": {
+    "impacts": {
+      "leather": {
+        "medium": {
+          "destroy01": {
+            "name": "Physics - Impacts - Leather Medium - Destroy01"
+          },
+          "destroy03": {
+            "name": "Physics - Impacts - Leather Medium - Destroy03"
+          }
+        }
+      }
+    }
+  },
+  "plastic": {
+    "big": {
+      "destroy01": {
+        "name": "Plastic Big - Destroy01"
+      },
+      "destroy02": {
+        "name": "Plastic Big - Destroy02"
+      },
+      "impact": {
+        "medium03": {
+          "name": "Plastic Big - Impact - Medium03"
+        }
+      }
+    },
+    "medium": {
+      "destroy01": {
+        "name": "Plastic Medium - Destroy01"
+      },
+      "destroy03": {
+        "name": "Plastic Medium - Destroy03"
+      }
+    }
+  },
+  "player": {
+    "break": {
+      "heavy02": {
+        "name": "Player - break heavy02"
+      },
+      "heavy03": {
+        "name": "Player - break heavy03"
+      },
+      "light03": {
+        "name": "Player - break light03"
+      }
+    },
+    "crawl": {
+      "to": {
+        "crouch01": {
+          "name": "player crawl to crouch01"
+        },
+        "crouch02": {
+          "name": "player crawl to crouch02"
+        },
+        "crouch03": {
+          "name": "player crawl to crouch03"
+        }
+      }
+    },
+    "crouch": {
+      "to": {
+        "crawl01": {
+          "name": "player crouch to crawl01"
+        },
+        "crawl02": {
+          "name": "player crouch to crawl02"
+        },
+        "crawl03": {
+          "name": "player crouch to crawl03"
+        },
+        "stand01": {
+          "name": "player crouch to stand01"
+        },
+        "stand02": {
+          "name": "player crouch to stand02"
+        },
+        "stand03": {
+          "name": "player crouch to stand03"
+        }
+      }
+    },
+    "death": {
+      "explosion01": {
+        "name": "player death explosion01"
+      },
+      "explosion02": {
+        "name": "player death explosion02"
+      },
+      "explosion03": {
+        "name": "player death explosion03"
+      }
+    },
+    "death01": {
+      "name": "player death01"
+    },
+    "death02": {
+      "name": "player death02"
+    },
+    "death03": {
+      "name": "player death03"
+    },
+    "fall": {
+      "loop": {
+        "name": "player fall loop"
+      }
+    },
+    "hurt": {
+      "long01": {
+        "name": "player hurt long01"
+      },
+      "long02": {
+        "name": "player hurt long02"
+      },
+      "long03": {
+        "name": "player hurt long03"
+      },
+      "short01": {
+        "name": "player hurt short01"
+      },
+      "short02": {
+        "name": "player hurt short02"
+      }
+    },
+    "impact": {
+      "heavy01": {
+        "name": "Player - impact heavy01"
+      },
+      "heavy02": {
+        "name": "Player - impact heavy02"
+      },
+      "heavy03": {
+        "name": "Player - impact heavy03"
+      },
+      "medium01": {
+        "name": "Player - impact medium01"
+      },
+      "medium02": {
+        "name": "Player - impact medium02"
+      },
+      "medium03": {
+        "name": "Player - impact medium03"
+      },
+      "small01": {
+        "name": "Player - impact small01"
+      },
+      "small02": {
+        "name": "Player - impact small02"
+      },
+      "small03": {
+        "name": "Player - impact small03"
+      }
+    },
+    "jump01": {
+      "name": "player jump01"
+    },
+    "jump02": {
+      "name": "player jump02"
+    },
+    "jump03": {
+      "name": "player jump03"
+    },
+    "land01": {
+      "name": "player land01"
+    },
+    "land02": {
+      "name": "player land02"
+    },
+    "land03": {
+      "name": "player land03"
+    },
+    "overcharge": {
+      "loop": {
+        "name": "player overcharge loop"
+      }
+    },
+    "slide": {
+      "name": "player slide"
+    },
+    "spectate": {
+      "charge": {
+        "loop": {
+          "name": "player spectate charge loop"
+        }
+      }
+    },
+    "stand": {
+      "to": {
+        "crouch01": {
+          "name": "player stand to crouch01"
+        },
+        "crouch02": {
+          "name": "player stand to crouch02"
+        },
+        "crouch03": {
+          "name": "player stand to crouch03"
+        }
+      }
+    },
+    "tumble": {
+      "can": {
+        "exit": {
+          "name": "player tumble can exit"
+        }
+      },
+      "move": {
+        "loop": {
+          "name": "player tumble move loop"
+        }
+      },
+      "start": {
+        "name": "player tumble start"
+      },
+      "stop": {
+        "name": "player tumble stop"
+      }
+    }
+  },
+  "prop": {
+    "loop": {
+      "barrel": {
+        "fire": {
+          "name": "prop loop barrel fire"
+        }
+      },
+      "cauldron": {
+        "name": "prop loop cauldron"
+      },
+      "electrical": {
+        "buzz": {
+          "name": "prop loop electrical buzz"
+        }
+      },
+      "furnace": {
+        "name": "prop loop furnace"
+      },
+      "slime2": {
+        "name": "prop loop slime2"
+      }
+    },
+    "truck": {
+      "name": "prop truck"
+    }
+  },
+  "radio": {
+    "loop": {
+      "name": "radio loop"
+    }
+  },
+  "rock": {
+    "medium": {
+      "destroy03": {
+        "name": "Rock Medium - Destroy03"
+      }
+    }
+  },
+  "rug": {
+    "slide": {
+      "loop": {
+        "medium": {
+          "name": "Rug - Slide Loop- Medium"
+        }
+      }
+    }
+  },
+  "safe": {
+    "close": {
+      "heavy01": {
+        "name": "safe close heavy01"
+      },
+      "heavy03": {
+        "name": "safe close heavy03"
+      }
+    },
+    "close02": {
+      "name": "safe close02"
+    },
+    "move": {
+      "end01": {
+        "name": "safe move end01"
+      },
+      "end02": {
+        "name": "safe move end02"
+      },
+      "loop": {
+        "name": "safe move loop"
+      }
+    },
+    "open01": {
+      "name": "safe open01"
+    },
+    "open03": {
+      "name": "safe open03"
+    }
+  },
+  "scare": {
+    "sighting02": {
+      "name": "scare sighting02"
+    },
+    "sighting04": {
+      "name": "scare sighting04"
+    },
+    "sighting06": {
+      "name": "scare sighting06"
+    },
+    "sighting07": {
+      "name": "scare sighting07"
+    },
+    "sighting08": {
+      "name": "scare sighting08"
+    },
+    "sighting09": {
+      "name": "scare sighting09"
+    },
+    "sighting10": {
+      "name": "scare sighting10"
+    }
+  },
+  "security": {
+    "laser": {
+      "close": {
+        "loop": {
+          "name": "security laser close loop"
+        }
+      },
+      "loop": {
+        "name": "security laser loop"
+      },
+      "power": {
+        "down": {
+          "name": "security laser power down"
+        },
+        "up": {
+          "name": "security laser power up"
+        }
+      }
+    }
+  },
+  "shifting": {
+    "cavern": {
+      "ambience": {
+        "loop": {
+          "name": "Shifting Cavern Ambience Loop"
+        }
+      }
+    }
+  },
+  "snd": {
+    "dirt": {
+      "tracker": {
+        "equip": {
+          "name": "snd_dirt_tracker_equip"
+        },
+        "loop": {
+          "name": "snd_dirt_tracker_loop"
+        },
+        "unequip": {
+          "name": "snd_dirt_tracker_unequip"
+        }
+      }
+    },
+    "global": {
+      "footstep": {
+        "metal01": {
+          "name": "snd_global_footstep_metal01"
+        },
+        "metal02": {
+          "name": "snd_global_footstep_metal02"
+        },
+        "metal03": {
+          "name": "snd_global_footstep_metal03"
+        }
+      }
+    }
+  },
+  "toilet": {
+    "lid": {
+      "move": {
+        "loop": {
+          "name": "toilet lid move loop"
+        }
+      }
+    }
+  },
+  "trap": {
+    "doll": {
+      "loop": {
+        "name": "trap doll loop"
+      }
+    },
+    "frog": {
+      "loop": {
+        "name": "trap frog loop"
+      }
+    },
+    "grandfather": {
+      "clock": {
+        "tick02": {
+          "name": "trap grandfather clock tick02"
+        },
+        "tick03": {
+          "name": "trap grandfather clock tick03"
+        }
+      }
+    },
+    "monkey": {
+      "loop": {
+        "name": "trap monkey loop"
+      }
+    },
+    "musicbox": {
+      "music": {
+        "name": "trap musicbox music"
+      }
+    },
+    "propane": {
+      "tank": {
+        "loop": {
+          "name": "trap propane tank loop"
+        }
+      }
+    }
+  },
+  "tricycle": {
+    "glitch": {
+      "in01": {
+        "name": "tricycle glitch in01"
+      },
+      "out03": {
+        "name": "tricycle glitch out03"
+      }
+    }
+  },
+  "truck": {
+    "door": {
+      "impact": {
+        "heavy01": {
+          "name": "Truck Door - Impact - Heavy01"
+        },
+        "heavy02": {
+          "name": "Truck Door - Impact - Heavy02"
+        },
+        "heavy03": {
+          "name": "Truck Door - Impact - Heavy03"
+        }
+      },
+      "message": {
+        "recieved": {
+          "name": "truck door message recieved"
+        }
+      },
+      "move": {
+        "loop": {
+          "end01": {
+            "name": "Truck Door - Move - Loop End01"
+          },
+          "end02": {
+            "name": "Truck Door - Move - Loop End02"
+          },
+          "end03": {
+            "name": "Truck Door - Move - Loop End03"
+          },
+          "start01": {
+            "name": "Truck Door - Move - Loop Start01"
+          },
+          "start02": {
+            "name": "Truck Door - Move - Loop Start02"
+          },
+          "start03": {
+            "name": "Truck Door - Move - Loop Start03"
+          }
+        }
+      },
+      "press": {
+        "name": "truck door press"
+      },
+      "type": {
+        "name": "truck door type"
+      }
+    },
+    "healer": {
+      "loop": {
+        "name": "truck healer loop"
+      }
+    }
+  },
+  "tv": {
+    "music": {
+      "name": "tv music"
+    }
+  },
+  "ui": {
+    "discover": {
+      "cosmetic": {
+        "common": {
+          "name": "ui discover cosmetic - common"
+        },
+        "uncommon": {
+          "name": "ui discover cosmetic - uncommon"
+        }
+      },
+      "name": "ui discover"
+    },
+    "moon": {
+      "attribute01": {
+        "name": "ui moon attribute01"
+      }
+    }
+  },
+  "untitled": {
+    "flesh": {
+      "medium": {
+        "impact": {
+          "heavy01": {
+            "name": "untitled - Flesh Medium - Impact - Heavy01"
+          },
+          "heavy02": {
+            "name": "untitled - Flesh Medium - Impact - Heavy02"
+          },
+          "heavy03": {
+            "name": "untitled - Flesh Medium - Impact - Heavy03"
+          },
+          "light01": {
+            "name": "untitled - Flesh Medium - Impact - Light01"
+          },
+          "light02": {
+            "name": "untitled - Flesh Medium - Impact - Light02"
+          },
+          "light03": {
+            "name": "untitled - Flesh Medium - Impact - Light03"
+          },
+          "medium01": {
+            "name": "untitled - Flesh Medium - Impact - Medium01"
+          },
+          "medium02": {
+            "name": "untitled - Flesh Medium - Impact - Medium02"
+          },
+          "medium03": {
+            "name": "untitled - Flesh Medium - Impact - Medium03"
+          }
+        }
+      }
+    },
+    "glass": {
+      "small": {
+        "impact": {
+          "light03": {
+            "name": "untitled - Glass Small - Impact - Light03"
+          }
+        }
+      }
+    },
+    "phys": {
+      "vhs": {
+        "destroy01": {
+          "name": "untitled - phys - vhs - Destroy01"
+        }
+      }
+    }
+  },
+  "valuable": {
+    "baby": {
+      "head": {
+        "crying": {
+          "loop": {
+            "name": "valuable baby head crying loop"
+          }
+        }
+      }
+    },
+    "car": {
+      "engine": {
+        "loop": {
+          "name": "valuable car engine loop"
+        }
+      }
+    },
+    "crystal": {
+      "ball": {
+        "loop": {
+          "name": "valuable crystal ball loop"
+        }
+      }
+    },
+    "gumball": {
+      "close01": {
+        "name": "valuable gumball close01"
+      },
+      "close02": {
+        "name": "valuable gumball close02"
+      },
+      "close03": {
+        "name": "valuable gumball close03"
+      },
+      "loop": {
+        "name": "valuable gumball loop"
+      }
+    },
+    "plane": {
+      "crank": {
+        "loop": {
+          "name": "valuable plane crank loop"
+        }
+      },
+      "fly": {
+        "loop": {
+          "name": "valuable plane fly loop"
+        }
+      }
+    },
+    "scale": {
+      "error": {
+        "name": "valuable scale error"
+      }
+    },
+    "star": {
+      "wand": {
+        "sparkle01": {
+          "name": "valuable star wand sparkle01"
+        }
+      }
+    },
+    "teeth": {
+      "spring": {
+        "loop": {
+          "name": "valuable teeth spring loop"
+        }
+      }
+    },
+    "traffic": {
+      "light": {
+        "tic": {
+          "fast": {
+            "loop": {
+              "name": "valuable traffic light tic fast loop"
+            }
+          },
+          "slow": {
+            "loop": {
+              "name": "valuable traffic light tic slow loop"
+            }
+          }
+        }
+      }
+    }
+  },
+  "wardrobe": {
+    "close": {
+      "heavy02": {
+        "name": "wardrobe close heavy02"
+      }
+    },
+    "open03": {
+      "name": "wardrobe open03"
+    }
+  },
+  "wizard": {
+    "door": {
+      "close": {
+        "heavy02": {
+          "name": "wizard door close heavy02"
+        }
+      },
+      "close02": {
+        "name": "wizard door close02"
+      },
+      "close03": {
+        "name": "wizard door close03"
+      },
+      "hinge": {
+        "break03": {
+          "name": "wizard door hinge break03"
+        }
+      },
+      "move": {
+        "end01": {
+          "name": "wizard door move end01"
+        },
+        "end02": {
+          "name": "wizard door move end02"
+        },
+        "end03": {
+          "name": "wizard door move end03"
+        },
+        "loop": {
+          "name": "wizard door move loop"
+        }
+      },
+      "open01": {
+        "name": "wizard door open01"
+      },
+      "open02": {
+        "name": "wizard door open02"
+      },
+      "open03": {
+        "name": "wizard door open03"
+      }
+    }
+  },
+  "wood": {
+    "hollow": {
+      "big": {
+        "destroy01": {
+          "name": "Wood hollow Big - Destroy01"
+        },
+        "impact": {
+          "light01": {
+            "name": "Wood hollow Big - Impact - Light01"
+          },
+          "light03": {
+            "name": "Wood Hollow Big - Impact - Light03"
+          }
+        }
+      },
+      "medium": {
+        "destroy02": {
+          "name": "Wood hollow Medium - Destroy02"
+        },
+        "destroy03": {
+          "name": "Wood hollow Medium - Destroy03"
+        }
+      },
+      "small": {
+        "destroy01": {
+          "name": "Wood Hollow Small - Destroy01"
+        }
+      }
+    },
+    "slide": {
+      "loop": {
+        "medium": {
+          "name": "Wood - Slide Loop- Medium"
+        }
+      }
+    }
+  },
+  "world01": {
+    "footstep": {
+      "grass01": {
+        "new": {
+          "name": "world01_footstep_grass01_new"
+        }
+      },
+      "grass02": {
+        "new": {
+          "name": "world01_footstep_grass02_new"
+        }
+      },
+      "grass03": {
+        "new": {
+          "name": "world01_footstep_grass03_new"
+        }
+      }
+    }
+  }
+}

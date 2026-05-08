@@ -1,0 +1,54 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <AssemblyName>NobleMod</AssemblyName>
+    <RootNamespace>NobleMod</RootNamespace>
+    <Authors>Raisery</Authors>
+    <Company>Raisery</Company>
+    <Product>NobleMod</Product>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Reference paths">
+    <RefsDir>$(MSBuildProjectDirectory)\refs</RefsDir>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="BepInEx">
+      <HintPath>$(RefsDir)\BepInEx.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="0Harmony">
+      <HintPath>$(RefsDir)\0Harmony.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>$(RefsDir)\UnityEngine.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>$(RefsDir)\UnityEngine.CoreModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.AudioModule">
+      <HintPath>$(RefsDir)\UnityEngine.AudioModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestModule">
+      <HintPath>$(RefsDir)\UnityEngine.UnityWebRequestModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestAudioModule">
+      <HintPath>$(RefsDir)\UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <Target Name="CheckRefs" BeforeTargets="ResolveReferences">
+    <Error Text="Missing refs folder: $(RefsDir)" Condition="!Exists('$(RefsDir)')" />
+    <Error Text="Missing BepInEx.dll in refs" Condition="!Exists('$(RefsDir)\BepInEx.dll')" />
+    <Error Text="Missing 0Harmony.dll in refs" Condition="!Exists('$(RefsDir)\0Harmony.dll')" />
+    <Error Text="Missing UnityEngine.dll in refs" Condition="!Exists('$(RefsDir)\UnityEngine.dll')" />
+  </Target>
+</Project>

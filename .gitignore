@@ -1,0 +1,13 @@
+/CustomSounds/*
+/SpawnConfig/*
+/refs/
+/dist/
+/obj/
+/bin/
+/build/
+/release/
+/debug/
+/thunderstore/
+/.cursor/
+/scripts/
+.prettierrc.yaml
