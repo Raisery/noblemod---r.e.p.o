@@ -1,3 +1,4 @@
+using System.IO;
 using BepInEx;
 using BepInEx.Logging;
 using HarmonyLib;
@@ -12,8 +13,12 @@ public sealed class Plugin : BaseUnityPlugin
     internal static Harmony Harmony;
     internal static ManualLogSource Log;
 
+    /// <summary>Répertoire contenant NobleMod.dll (zip Thunderstore « plat » ou dossier sous plugins/).</summary>
+    internal static string AssemblyDirectory { get; private set; } = "";
+
     private void Awake()
     {
+        AssemblyDirectory = Path.GetDirectoryName(typeof(Plugin).Assembly.Location) ?? "";
         Instance = this;
         Log = Logger;
         ModConfig.Bind(Config);

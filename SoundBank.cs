@@ -5,7 +5,6 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.RegularExpressions;
-using BepInEx;
 using BepInEx.Logging;
 using UnityEngine;
 
@@ -369,7 +368,7 @@ internal static class SoundBank
         _audioSourceToVanillaClipName = new ConditionalWeakTable<AudioSource, string>();
         _managedRerollStickyBySource = new ConditionalWeakTable<AudioSource, ManagedRerollSticky>();
 
-        var root = Path.Combine(Paths.PluginPath, PluginInfo.Name, "CustomSounds");
+        var root = Path.Combine(Plugin.AssemblyDirectory, "CustomSounds");
         _customSoundsRootPath = root;
         var configuredDiscovered = ModConfig.DiscoveredClipsOutputPath.Value?.Trim();
         _discoveredOutputRootPath = string.IsNullOrWhiteSpace(configuredDiscovered) ? root : configuredDiscovered;

@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
-using BepInEx;
 using BepInEx.Logging;
 
 namespace NobleMod;
@@ -31,7 +30,7 @@ internal static class LevelEnemyOverrideBank
     private static void Reload()
     {
         MobByLevel.Clear();
-        _spawnConfigRootPath = Path.Combine(Paths.PluginPath, PluginInfo.Name, "SpawnConfig");
+        _spawnConfigRootPath = Path.Combine(Plugin.AssemblyDirectory, "SpawnConfig");
         Directory.CreateDirectory(_spawnConfigRootPath);
 
         var fileName = ModConfig.SpawnOverridesFileName.Value;
