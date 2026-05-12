@@ -1,0 +1,49 @@
+{
+  "replacements": [
+    {
+      "matches": ["*:*:extraction point jingle 2 local"],
+      "sounds": [
+        {
+          "sound": "medium/le-caca-est-cuit.ogg",
+          "weight": 100
+        }
+      ]
+    },
+    {
+      "matches": ["*:*:boombox music local"],
+      "sounds": [
+        {
+          "sound": "long/neg.ogg",
+          "weight": 100
+        }
+      ]
+    },
+    {
+      "matches": ["*:*:player hurt short01"],
+      "sounds": [
+        {
+          "sound": "long/neg.ogg",
+          "weight": 100
+        }
+      ]
+    },
+    {
+      "matches": ["*:*:enemy gnome move long01"],
+      "sounds": [
+        {
+          "sound": "medium/gougou-gaga.ogg",
+          "weight": 100
+        }
+      ]
+    },
+    {
+      "matches": ["*:*:player slide"],
+      "sounds": [
+        {
+          "sound": "shorts/cartoon-slide.ogg",
+          "weight": 100
+        }
+      ]
+    }
+  ]
+}

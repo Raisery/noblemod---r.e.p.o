@@ -18,17 +18,17 @@ internal static class NobleModMenuIntegration
     private static MethodInfo _miCreatePopup;
     private static Type _presetSideType;
     private static object _popup;
-    private static object _toggleSounds;
-    private static object _toggleLogWeightedPicks;
     private static object _toggleSpawn;
+    private static object _toggleSoundPackConditions;
+    private static object _toggleLogSoundPickEachMatch;
     private static bool _methodsResolved;
 
     private static void ClearNoblePopupCache()
     {
         _popup = null;
-        _toggleSounds = null;
-        _toggleLogWeightedPicks = null;
         _toggleSpawn = null;
+        _toggleSoundPackConditions = null;
+        _toggleLogSoundPickEachMatch = null;
     }
 
     /// <summary>
@@ -364,14 +364,23 @@ internal static class NobleModMenuIntegration
                 return;
             }
 
-            var setStateType = _toggleSounds?.GetType();
-            var setState = setStateType?.GetMethod("SetState", new[] { typeof(bool), typeof(bool) });
-            if (IsUnityObjAlive(_toggleSounds))
-                setState?.Invoke(_toggleSounds, new object[] { ModConfig.EnableCustomSounds.Value, false });
-            if (IsUnityObjAlive(_toggleLogWeightedPicks))
-                setState?.Invoke(_toggleLogWeightedPicks, new object[] { ModConfig.LogWeightedSoundPicks.Value, false });
             if (IsUnityObjAlive(_toggleSpawn))
+            {
+                var setState = _toggleSpawn.GetType().GetMethod("SetState", new[] { typeof(bool), typeof(bool) });
                 setState?.Invoke(_toggleSpawn, new object[] { ModConfig.EnableSpawnOverrides.Value, false });
+            }
+
+            if (IsUnityObjAlive(_toggleSoundPackConditions))
+            {
+                var setState2 = _toggleSoundPackConditions.GetType().GetMethod("SetState", new[] { typeof(bool), typeof(bool) });
+                setState2?.Invoke(_toggleSoundPackConditions, new object[] { ModConfig.EnableNobleModSoundPackConditions.Value, false });
+            }
+
+            if (IsUnityObjAlive(_toggleLogSoundPickEachMatch))
+            {
+                var setState3 = _toggleLogSoundPickEachMatch.GetType().GetMethod("SetState", new[] { typeof(bool), typeof(bool) });
+                setState3?.Invoke(_toggleLogSoundPickEachMatch, new object[] { ModConfig.LogSoundPickEachMatch.Value, false });
+            }
 
             // false = remplace la page courante (Parametres) en Inactive : sinon le menu derriere reste
             // interactif (hover/clics) et vole les raycasts des toggles NobleMod.
@@ -420,44 +429,6 @@ internal static class NobleModMenuIntegration
         if (addToScroll == null)
             throw new InvalidOperationException("REPOPopupPage.AddElementToScrollView(RectTransform, ...) introuvable.");
 
-        var toggleSoundsComp = _miCreateToggle.Invoke(
-            null,
-            new object[]
-            {
-                "Sons personnalises",
-                new Action<bool>(v =>
-                {
-                    ModConfig.EnableCustomSounds.Value = v;
-                    SaveCfg();
-                }),
-                scroller,
-                Vector2.zero,
-                "ON",
-                "OFF",
-                ModConfig.EnableCustomSounds.Value
-            }) as Component;
-        _toggleSounds = toggleSoundsComp;
-        RegisterPopupScrollElement(_popup, addToScroll, toggleSoundsComp, topPad: 14f, bottomPad: 0f);
-
-        var toggleLogPicksComp = _miCreateToggle.Invoke(
-            null,
-            new object[]
-            {
-                "Logs tirages pondérés (debug)",
-                new Action<bool>(v =>
-                {
-                    ModConfig.LogWeightedSoundPicks.Value = v;
-                    SaveCfg();
-                }),
-                scroller,
-                Vector2.zero,
-                "ON",
-                "OFF",
-                ModConfig.LogWeightedSoundPicks.Value
-            }) as Component;
-        _toggleLogWeightedPicks = toggleLogPicksComp;
-        RegisterPopupScrollElement(_popup, addToScroll, toggleLogPicksComp, topPad: 0f, bottomPad: 0f);
-
         var toggleSpawnComp = _miCreateToggle.Invoke(
             null,
             new object[]
@@ -475,7 +446,45 @@ internal static class NobleModMenuIntegration
                 ModConfig.EnableSpawnOverrides.Value
             }) as Component;
         _toggleSpawn = toggleSpawnComp;
-        RegisterPopupScrollElement(_popup, addToScroll, toggleSpawnComp, topPad: 0f, bottomPad: 0f);
+        RegisterPopupScrollElement(_popup, addToScroll, toggleSpawnComp, topPad: 14f, bottomPad: 0f);
+
+        var toggleSoundComp = _miCreateToggle.Invoke(
+            null,
+            new object[]
+            {
+                "Conditions pack NobleMod (SoundAPI)",
+                new Action<bool>(v =>
+                {
+                    ModConfig.EnableNobleModSoundPackConditions.Value = v;
+                    SaveCfg();
+                }),
+                scroller,
+                Vector2.zero,
+                "ON",
+                "OFF",
+                ModConfig.EnableNobleModSoundPackConditions.Value
+            }) as Component;
+        _toggleSoundPackConditions = toggleSoundComp;
+        RegisterPopupScrollElement(_popup, addToScroll, toggleSoundComp, topPad: 0f, bottomPad: 0f);
+
+        var toggleLogSoundPickComp = _miCreateToggle.Invoke(
+            null,
+            new object[]
+            {
+                "Log chaque son selectionne (random_slot)",
+                new Action<bool>(v =>
+                {
+                    ModConfig.LogSoundPickEachMatch.Value = v;
+                    SaveCfg();
+                }),
+                scroller,
+                Vector2.zero,
+                "ON",
+                "OFF",
+                ModConfig.LogSoundPickEachMatch.Value
+            }) as Component;
+        _toggleLogSoundPickEachMatch = toggleLogSoundPickComp;
+        RegisterPopupScrollElement(_popup, addToScroll, toggleLogSoundPickComp, topPad: 0f, bottomPad: 0f);
 
         var closeBtn = _miCreateButton.Invoke(
             null,

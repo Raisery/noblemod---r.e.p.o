@@ -1,0 +1,17 @@
+{
+  "replacements": [
+    {
+      "matches": ["*:*:headman chase loop"],
+      "sounds": [
+        {
+          "sound": "headman/chacarron.ogg",
+          "weight": 50
+        },
+        {
+          "sound": "headman/smash-mouth.ogg",
+          "weight": 50
+        }
+      ]
+    }
+  ]
+}

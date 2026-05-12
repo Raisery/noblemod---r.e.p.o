@@ -1,13 +1,11 @@
-/CustomSounds/*
-/SpawnConfig/*
+/content/sound-pack/sounds/*
+/content/spawn/*
 /refs/
 /dist/
 /obj/
 /bin/
-/build/
 /release/
 /debug/
 /thunderstore/
 /.cursor/
-/scripts/
 .prettierrc.yaml

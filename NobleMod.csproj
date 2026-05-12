@@ -1,6 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net472</TargetFramework>
+    <!-- net48 : aligné avec des dépendances jeu (ex. Klattersynth ciblant 4.8) tout en restant Mono / BepInEx classique. -->
+    <TargetFramework>net48</TargetFramework>
     <LangVersion>latest</LangVersion>
     <Nullable>disable</Nullable>
     <AssemblyName>NobleMod</AssemblyName>
@@ -14,41 +15,26 @@
     <RefsDir>$(MSBuildProjectDirectory)\refs</RefsDir>
   </PropertyGroup>
 
+  <!--
+    Toutes les DLL dans refs, sauf facades BCL copiées depuis Managed qui doublonnent le profil .NET Framework
+    et déclenchent MSB3277 (conflits de version avec les assemblies du framework / facades 4.8).
+    Retrait explicite par chemin (Remove sur %(Filename) interdit dans ce contexte MSBuild).
+  -->
   <ItemGroup>
-    <Reference Include="BepInEx">
-      <HintPath>$(RefsDir)\BepInEx.dll</HintPath>
-      <Private>false</Private>
-    </Reference>
-    <Reference Include="0Harmony">
-      <HintPath>$(RefsDir)\0Harmony.dll</HintPath>
-      <Private>false</Private>
-    </Reference>
-    <Reference Include="UnityEngine">
-      <HintPath>$(RefsDir)\UnityEngine.dll</HintPath>
-      <Private>false</Private>
-    </Reference>
-    <Reference Include="UnityEngine.CoreModule">
-      <HintPath>$(RefsDir)\UnityEngine.CoreModule.dll</HintPath>
-      <Private>false</Private>
-    </Reference>
-    <Reference Include="UnityEngine.AudioModule">
-      <HintPath>$(RefsDir)\UnityEngine.AudioModule.dll</HintPath>
-      <Private>false</Private>
-    </Reference>
-    <Reference Include="UnityEngine.UnityWebRequestModule">
-      <HintPath>$(RefsDir)\UnityEngine.UnityWebRequestModule.dll</HintPath>
-      <Private>false</Private>
-    </Reference>
-    <Reference Include="UnityEngine.UnityWebRequestAudioModule">
-      <HintPath>$(RefsDir)\UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
-      <Private>false</Private>
-    </Reference>
+    <_RefDll Include="$(RefsDir)\*.dll" />
+    <_RefDll Remove="$(RefsDir)\netstandard.dll" />
+    <_RefDll Remove="$(RefsDir)\System.Runtime.dll" />
+    <_RefDll Remove="$(RefsDir)\System.IO.Compression.dll" />
+    <_RefDll Remove="$(RefsDir)\System.Net.Http.dll" />
+    <Reference Include="@(_RefDll)" Private="false" />
   </ItemGroup>
 
   <Target Name="CheckRefs" BeforeTargets="ResolveReferences">
     <Error Text="Missing refs folder: $(RefsDir)" Condition="!Exists('$(RefsDir)')" />
+    <Error Text="Missing Assembly-CSharp.dll in refs (copiez REPO_Data\Managed\*.dll ou lancez build/Copy-RepoRefs.ps1)" Condition="!Exists('$(RefsDir)\Assembly-CSharp.dll')" />
     <Error Text="Missing BepInEx.dll in refs" Condition="!Exists('$(RefsDir)\BepInEx.dll')" />
     <Error Text="Missing 0Harmony.dll in refs" Condition="!Exists('$(RefsDir)\0Harmony.dll')" />
-    <Error Text="Missing UnityEngine.dll in refs" Condition="!Exists('$(RefsDir)\UnityEngine.dll')" />
+    <Error Text="Missing me.loaforc.soundapi.dll in refs (voir build/Copy-RepoRefs.ps1)" Condition="!Exists('$(RefsDir)\me.loaforc.soundapi.dll')" />
+    <Error Text="Missing REPOLib.dll in refs (voir build/Copy-RepoRefs.ps1)" Condition="!Exists('$(RefsDir)\REPOLib.dll')" />
   </Target>
 </Project>

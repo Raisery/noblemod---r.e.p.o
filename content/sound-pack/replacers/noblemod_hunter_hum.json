@@ -1,0 +1,73 @@
+{
+  "replacements": [
+    {
+      "matches": ["*:*:enemy hunter humming loop"],
+      "sounds": [
+        {
+          "weight": 1,
+          "sound": "herve/jvais_vnir_te_voir_fdp.ogg",
+          "condition": {
+            "type": "NobleMod:random_slot",
+            "random_match": "1..100",
+            "sticky": true
+          }
+        },
+        {
+          "weight": 1,
+          "sound": "herve/question_de_temps.ogg",
+          "condition": {
+            "type": "NobleMod:random_slot",
+            "random_match": "101..200",
+            "sticky": true
+          }
+        },
+        {
+          "weight": 1,
+          "sound": "herve/je_ne_vais_pas_parler.ogg",
+          "condition": {
+            "type": "NobleMod:random_slot",
+            "random_match": "201..300",
+            "sticky": true
+          }
+        },
+        {
+          "weight": 1,
+          "sound": "herve/coiffeur.ogg",
+          "condition": {
+            "type": "NobleMod:random_slot",
+            "random_match": "301..400",
+            "sticky": true
+          }
+        },
+        {
+          "weight": 1,
+          "sound": "herve/couper_les_chveux.ogg",
+          "condition": {
+            "type": "NobleMod:random_slot",
+            "random_match": "401..500",
+            "sticky": true
+          }
+        },
+        {
+          "weight": 1,
+          "sound": "herve/bougnoule.ogg",
+          "condition": {
+            "type": "NobleMod:random_slot",
+            "random_match": "501..600",
+            "sticky": true
+          }
+        },
+        {
+          "weight": 1,
+          "sound": "long/silence.ogg",
+          "condition": {
+            "type": "NobleMod:random_slot",
+            "random_match": "601..1000",
+            "sticky": true
+          }
+        }
+      ]
+    }
+  ],
+  "update_every_frame": true
+}
