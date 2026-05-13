@@ -26,6 +26,22 @@ internal static class ModConfig
     /// <summary>Debug : à chaque évaluation où la ligne matche, log le nom du fichier son (<c>sound</c>).</summary>
     public static ConfigEntry<bool> LogSoundPickEachMatch;
 
+    /// <summary>
+    /// Active la cohérence multijoueur des tirages aléatoires (conditions NobleMod ET tirages internes SoundAPI).
+    /// Le master diffuse un pool partagé via REPOLib NetworkedEvent, chaque client indexe ce pool via une clé stable
+    /// (matches du groupe + ViewID du PhotonView le plus proche + occurrence temporelle). Solo : pas de pool, fallback local.
+    /// </summary>
+    public static ConfigEntry<bool> EnableMultiplayerSoundSync;
+
+    /// <summary>Taille du pool partagé (nombre d'entrées). Plus grand = moins de collisions de clés.</summary>
+    public static ConfigEntry<int> MultiplayerSoundPoolSize;
+
+    /// <summary>Intervalle entre deux régénérations complètes du pool par le master, en secondes (0 = jamais après init / changement de niveau).</summary>
+    public static ConfigEntry<int> MultiplayerSoundPoolRefreshIntervalSeconds;
+
+    /// <summary>Debug : log les broadcasts pool, lookups (clé -> R) et fallbacks locaux.</summary>
+    public static ConfigEntry<bool> LogMultiplayerSoundSync;
+
     public static void Bind(ConfigFile config)
     {
         EnableSpawnOverrides = config.Bind(
@@ -82,6 +98,34 @@ internal static class ModConfig
             "LogSoundPickEachMatch",
             false,
             "Debug : à chaque fois qu'une ligne NobleMod:random_slot matche (condition vraie), log BepInEx le nom du son (fichier .ogg). Active via le menu NobleMod. Si le nom n'est pas lisible, un log indique le type du Parent SoundAPI (reflexion sur proprietes/champs courants). Tres verbeux avec update_every_frame."
+        );
+
+        EnableMultiplayerSoundSync = config.Bind(
+            "Multiplayer",
+            "EnableMultiplayerSoundSync",
+            true,
+            "Active la coherence multijoueur des tirages aleatoires de sons (conditions NobleMod:random_slot + tirages internes SoundAPI quand plusieurs sons d'un meme groupe sont possibles, ex. headman). Le master diffuse un pool partage via REPOLib NetworkedEvent, chaque client le consulte avec une cle stable (matches du groupe + ViewID + occurrence temporelle). En solo : fallback Random.Range local (comportement actuel)."
+        );
+
+        MultiplayerSoundPoolSize = config.Bind(
+            "Multiplayer",
+            "MultiplayerSoundPoolSize",
+            256,
+            "Taille du pool partage (nombre d'entrees int). Borne [16..4096]. Plus grand = moins de collisions de cles (sons differents qui tomberaient sur la meme entree). 256 est largement suffisant."
+        );
+
+        MultiplayerSoundPoolRefreshIntervalSeconds = config.Bind(
+            "Multiplayer",
+            "MultiplayerSoundPoolRefreshIntervalSeconds",
+            300,
+            "Intervalle entre deux regenerations completes du pool par le master, en secondes (0 = jamais apres init / changement de niveau). Defaut 300s = 5 minutes."
+        );
+
+        LogMultiplayerSoundSync = config.Bind(
+            "Multiplayer",
+            "LogMultiplayerSoundSync",
+            false,
+            "Debug : log VERBEUX par evaluation (ex. seed Random utilisee pour chaque appel SoundAPI). Les events critiques (broadcast pool, reception, transitions room/master/player count) sont TOUJOURS logues quel que soit ce reglage."
         );
     }
 }

@@ -4,7 +4,7 @@ Mod BepInEx / Harmony pour REPO : **menu in-game** (MenuLib), **overrides de spa
 
 Auteur : **Raisery**
 
-**Dernière release documentée : 1.0.3** — conditions SoundAPI NobleMod (`NobleMod:random_slot`, mode sticky), correctifs de lecture/clamp audio côté SoundAPI, toggles menu et pack hunter (`update_every_frame`). Détail : [CHANGELOG.md](CHANGELOG.md).
+**Dernière release documentée : 1.1.0** — **cohérence multijoueur des sons aléatoires** (pool partagé Photon via REPOLib `NetworkedEvent`, indexé par clé stable ; couvre conditions `NobleMod:random_slot` et tirages internes SoundAPI). Détail : [CHANGELOG.md](CHANGELOG.md).
 
 **Historique des versions** : [CHANGELOG.md](CHANGELOG.md) (obligatoire pour suivre les changements entre releases). La **description courte** affichée sur Thunderstore est dans `thunderstore/manifest.json` ; la page mod Thunderstore utilise `thunderstore/README.md` (copiée dans le zip).
 
@@ -69,7 +69,26 @@ Fichier : `BepInEx\config\raisery.noblemod.cfg`
 
 - `EnableSpawnOverrides`, `SpawnOverridesFileName`, `LogSpawnOverrides` — spawn uniquement.
 - `EnableNobleModSoundPackConditions` — enregistrement au démarrage des conditions SoundAPI NobleMod (`NobleMod:random_slot`, etc.). **Redémarrage** pour appliquer ON/OFF ; si OFF, retirez ces `type` du JSON des replacers ou le chargement du pack peut échouer. Le reste des réglages audio reste dans les fichiers **SoundAPI** du pack.
+- **Section `[Multiplayer]` (fichier de config uniquement, pas de toggle menu)** : `EnableMultiplayerSoundSync` (défaut `true`) — synchronise les tirages aléatoires de sons entre joueurs en multijoueur ; `MultiplayerSoundPoolSize` (défaut `256`) ; `MultiplayerSoundPoolRefreshIntervalSeconds` (défaut `300` s ; `0` = jamais après init/changement de niveau) ; `LogMultiplayerSoundSync` (défaut `false`). Détails et architecture : section **Cohérence multijoueur des sons** ci-dessous.
 - **Debug (fichier de config uniquement, pas de toggle menu)** : `LogRandomSlotRange` — log `R = … -> son ….ogg` quand `R` change par source ; `LogStickyAttachDetach` — logs d’attache / détache du mode **sticky** sur l’`AudioSource`. Voir [CHANGELOG.md](CHANGELOG.md) section **1.0.3** pour le détail du comportement SoundAPI / Harmony.
+
+## Cohérence multijoueur des sons
+
+Sans cette feature, chaque client tire indépendamment ses sons aléatoires (50/50 chacarron vs smash-mouth, R 1..1000 pour les conditions plage, etc.) ⇒ deux joueurs peuvent entendre des variantes différentes pour le même évènement audio.
+
+NobleMod active par défaut une synchronisation **autoritaire pool indexé par clé** :
+
+1. **Pool partagé** : le master Photon génère un tableau d'entiers (taille `MultiplayerSoundPoolSize`) et le **broadcast une fois** via REPOLib `NetworkedEvent` (Photon `RaiseEvent`) avec `EventCaching.AddToRoomCacheGlobal` ⇒ tout joueur qui rejoint en cours de partie reçoit immédiatement le dernier pool. Topup automatique toutes les `MultiplayerSoundPoolRefreshIntervalSeconds` secondes et à chaque changement de master / joueur qui rejoint.
+2. **Clé stable** par évènement audio, identique sur tous les clients par construction :
+   - `matches` du `SoundReplacementGroup` (string du JSON, identique chez tous).
+   - `ViewID` du `PhotonView` le plus proche de l'`AudioSource` (sync Photon).
+   - Nom du clip vanilla (préfixe pack retiré).
+   - Occurrence temporelle quantifiée sur `PhotonNetwork.Time` : `clip.length` pour le `sticky`, ~250 ms pour le non-sticky.
+3. **Lookup local** : `R = pool[ FNV-1a(clé) % pool.Length ]` ⇒ aucun aller-retour réseau par tirage, juste de l'arithmétique locale.
+4. **Couverture des tirages internes SoundAPI** : un patch Harmony sur `loaforcsSoundAPI.SoundPacks.SoundReplacementHandler.TryGetReplacementClip` sauvegarde/restaure `UnityEngine.Random.state` autour d'un `Random.InitState(seedDeLaClé)`, ce qui synchronise les `Random.Range` que SoundAPI fait pour choisir entre plusieurs groupes qui matchent et entre plusieurs sons d'un groupe (ex. `noblemod_headman.json`).
+5. **Fallback** automatique sur `Random.Range` local quand : feature désactivée (`EnableMultiplayerSoundSync=false`), pas en room, room solo (≤ 1 joueur), pool pas encore reçu après join, ou clé non identifiable.
+
+Couvre nativement les ennemis spawnés via **REPOLib NetworkPrefab** (le ViewID Photon est sync par construction).
 
 ## Spawn mapping JSON (niveau -> mob principal)
 

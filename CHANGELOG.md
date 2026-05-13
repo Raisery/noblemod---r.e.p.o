@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.1.0] - 2026-05-13
+
+### Ajouté
+
+- **Cohérence multijoueur des sons aléatoires** : tous les joueurs entendent désormais la même variante quand un son a plusieurs candidats. Le master diffuse un pool d'entiers partagé via **REPOLib `NetworkedEvent`** (Photon, `EventCaching.AddToRoomCacheGlobal` pour que les joueurs qui rejoignent en cours de partie reçoivent immédiatement le dernier pool), chaque client l'indexe localement via une clé stable (`matches du groupe + ViewID du PhotonView le plus proche + clip vanilla + occurrence temporelle quantifiée sur PhotonNetwork.Time`) — pas de trafic réseau par tirage, juste un broadcast initial + topup périodique. Couvre :
+  - Les tirages **`NobleMod:random_slot`** (mode plage `R` et mode slot, sticky et non-sticky).
+  - Les tirages **internes SoundAPI** (`UnityEngine.Random.Range` dans `SoundReplacementHandler.TryGetReplacementClip` : choix du groupe quand plusieurs matchent + choix pondéré du son). Patch Harmony qui sauvegarde/restaure `Random.state` autour d'un `InitState` déterministe — couvre par exemple `noblemod_headman.json` où chacarron / smash-mouth étaient tirés indépendamment chez chaque joueur.
+- **Config (fichier seul, pas de toggle menu)** section `[Multiplayer]` :
+  - `EnableMultiplayerSoundSync` (défaut `true`).
+  - `MultiplayerSoundPoolSize` (défaut `256`, borne `[16..4096]`).
+  - `MultiplayerSoundPoolRefreshIntervalSeconds` (défaut `300`, `0` = jamais après init / changement de niveau).
+  - `LogMultiplayerSoundSync` (défaut `false`) — log VERBEUX par évaluation. Les événements critiques (broadcast pool, réception, transitions room/master/player count, heartbeat 15 s) sont **toujours** loggés.
+- **Architecture** :
+  - **Driver de polling** branché via Harmony postfix sur `Photon.Pun.PhotonHandler.LateUpdate` plutôt que sur `BaseUnityPlugin.Update` (non invoqué de façon fiable dans le contexte BepInEx / REPO observé).
+  - **Patch SoundAPI installé manuellement** (résolution `TryGetReplacementClip` par nom, sans contrainte de signature) pour rester silencieusement no-op si une future version de loaforcsSoundAPI change l'API — pas d'exception qui casserait `Harmony.PatchAll`.
+- **Fallback automatique** : si la sync est OFF, pas en room, room solo (≤ 1 joueur), pool pas encore reçu, ou clé non identifiable → retour à `UnityEngine.Random.Range` local (comportement actuel, aucune régression).
+- **Validé en multijoueur réel** (2 PC, master + client distant) : même `eventCode` négocié, génération de pool alignée, sons synchronisés sans latence perceptible.
+
 ## [1.0.3] - 2026-05-12
 
 ### Ajouté

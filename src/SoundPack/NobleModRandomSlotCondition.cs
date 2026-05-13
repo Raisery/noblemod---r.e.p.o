@@ -6,6 +6,7 @@ using loaforcsSoundAPI.Core.Data;
 using loaforcsSoundAPI.SoundPacks.Data;
 using loaforcsSoundAPI.SoundPacks.Data.Conditions;
 using NobleMod;
+using NobleMod.Multiplayer;
 using UnityEngine;
 
 namespace NobleMod.SoundPack;
@@ -206,6 +207,106 @@ public sealed class NobleModRandomSlotCondition : Condition
     }
 
     static int PickR1To1000() => UnityEngine.Random.Range(RangeRMin, RangeRMax + 1);
+
+    /// <summary>Variant de cle : 0 = mode plage R, 1 = mode slot.</summary>
+    const int KeyVariantRange = 0;
+
+    /// <summary>Variant de cle : 0 = mode plage R, 1 = mode slot.</summary>
+    const int KeyVariantSlot = 1;
+
+    static bool MultiplayerSyncEnabled => ModConfig.EnableMultiplayerSoundSync != null
+        && ModConfig.EnableMultiplayerSoundSync.Value
+        && NobleModSoundSyncNet.IsActiveInRoom;
+
+    /// <summary>
+    /// Mode plage sticky : tire un R deterministe partage (pool indexable par cle de groupe + ViewID + clip + bucket temporel).
+    /// Fallback : <see cref="PickR1To1000"/> local.
+    /// </summary>
+    static int RollRangeR_Sticky(SoundReplacementGroup g, AudioSource src, float clipLengthSec)
+    {
+        if (MultiplayerSyncEnabled)
+        {
+            var key = NobleModSoundSyncKey.BuildStickyKey(g, src, clipLengthSec, KeyVariantRange);
+            if (NobleModSoundSyncNet.TryRange(key, RangeRMin, RangeRMax, out var v))
+                return v;
+        }
+
+        return PickR1To1000();
+    }
+
+    /// <summary>
+    /// Mode plage non-sticky : tire un R deterministe partage avec quantum temporel court (~250ms) ⇒ R change frequemment mais reste sync entre clients dans la fenetre.
+    /// Fallback : <see cref="CoalescedRollThisFrame"/>.
+    /// </summary>
+    static int RollRangeR_NonSticky(SoundReplacementGroup g, AudioSource src)
+    {
+        if (MultiplayerSyncEnabled)
+        {
+            var key = NobleModSoundSyncKey.BuildNonStickyKey(g, src, KeyVariantRange);
+            if (NobleModSoundSyncNet.TryRange(key, RangeRMin, RangeRMax, out var v))
+                return v;
+        }
+
+        return CoalescedRollThisFrame();
+    }
+
+    /// <summary>
+    /// Mode slot sticky : tire un index ∈ [0..n) deterministe partage, respect des <paramref name="weights"/>.
+    /// Fallback : Pick (Weighted)Uniform local.
+    /// </summary>
+    static int RollSlot_Sticky(SoundReplacementGroup g, AudioSource src, float clipLengthSec, int n, IReadOnlyList<int> weights)
+    {
+        if (MultiplayerSyncEnabled)
+        {
+            var key = NobleModSoundSyncKey.BuildStickyKey(g, src, clipLengthSec, KeyVariantSlot);
+            if (NobleModSoundSyncNet.TryLookup(key, out var raw))
+                return DeterministicSlotPick(raw, n, weights);
+        }
+
+        return weights is { Count: var wc } && wc >= n ? PickWeighted(n, weights) : PickUniform(n);
+    }
+
+    /// <summary>
+    /// Mode slot non-sticky : tirage deterministe partage avec quantum temporel court (~250ms).
+    /// </summary>
+    static int RollSlot_NonSticky(SoundReplacementGroup g, AudioSource src, int n, IReadOnlyList<int> weights)
+    {
+        if (MultiplayerSyncEnabled)
+        {
+            var key = NobleModSoundSyncKey.BuildNonStickyKey(g, src, KeyVariantSlot);
+            if (NobleModSoundSyncNet.TryLookup(key, out var raw))
+                return DeterministicSlotPick(raw, n, weights);
+        }
+
+        return CoalescedSlotPickThisFrame(n, weights);
+    }
+
+    /// <summary>
+    /// Tirage pondere deterministe a partir d'une seed entiere : equivalent de <see cref="PickWeighted"/> avec
+    /// <c>r = (uint)seed % totalWeight</c> au lieu d'un <c>Random.Range</c>. Si pas de poids ou somme nulle : uniforme.
+    /// </summary>
+    internal static int DeterministicSlotPick(int seed, int n, IReadOnlyList<int> weights)
+    {
+        if (n <= 1)
+            return 0;
+        if (weights == null || weights.Count < n)
+            return (int)((uint)seed % (uint)n);
+
+        var total = 0;
+        for (var i = 0; i < n; i++)
+            total += Mathf.Max(0, weights[i]);
+        if (total <= 0)
+            return (int)((uint)seed % (uint)n);
+        var r = (int)((uint)seed % (uint)total);
+        for (var i = 0; i < n; i++)
+        {
+            r -= Mathf.Max(0, weights[i]);
+            if (r < 0)
+                return i;
+        }
+
+        return n - 1;
+    }
 
     SoundReplacementGroup GetReplacementGroup()
     {
@@ -488,7 +589,11 @@ public sealed class NobleModRandomSlotCondition : Condition
     {
         int pick;
         if (!Sticky)
-            pick = CoalescedRollThisFrame();
+        {
+            var gNs = GetReplacementGroup();
+            var srcNs = NobleModSoundEvalContext.CurrentAudioSource;
+            pick = RollRangeR_NonSticky(gNs, srcNs);
+        }
         else
         {
             var g = GetReplacementGroup();
@@ -500,8 +605,8 @@ public sealed class NobleModRandomSlotCondition : Condition
                      && stPaused.Initialized
                      && stPaused.ClipFingerprint == GetStickyClipFingerprint(src.clip, stPaused))
             {
-                // Ne pas utiliser CoalescedRollThisFrame ici : un frame où isPlaying est faux
-                // ferait changer R et SoundAPI couperait / re-swaperait le clip avant la fin.
+                // Ne pas re-tirer ici : un frame où isPlaying est faux ferait changer R et SoundAPI
+                // couperait / re-swaperait le clip avant la fin (idem en multi sync).
                 pick = stPaused.ChosenPick;
             }
             else if (!src.isPlaying)
@@ -549,7 +654,9 @@ public sealed class NobleModRandomSlotCondition : Condition
                             RefreshStickyRangeWarmup(g);
                         st.Initialized = true;
                         st.ClipFingerprint = fp;
-                        st.ChosenPick = GetStickyRangeWarmupPick(g);
+                        st.ChosenPick = RollRangeR_Sticky(g, src, len);
+                        if (g != null && RangeStickyWarmupByGroup.TryGetValue(g, out var hwAttach))
+                            hwAttach.R = st.ChosenPick;
                         st.LastTime = t;
                         st.LastStickyAttachFrame = Time.frameCount;
                         if (logSticky)
@@ -580,7 +687,7 @@ public sealed class NobleModRandomSlotCondition : Condition
                     {
                         if (logSticky)
                             TryLogStickyTransition(src, "plage", attach: false, detail: "boucle détectée (nouveau tirage R)");
-                        st.ChosenPick = PickR1To1000();
+                        st.ChosenPick = RollRangeR_Sticky(g, src, len);
                         if (g != null && RangeStickyWarmupByGroup.TryGetValue(g, out var hw))
                             hw.R = st.ChosenPick;
                         if (logSticky)
@@ -614,9 +721,9 @@ public sealed class NobleModRandomSlotCondition : Condition
 
         if (!Sticky)
         {
-            var pick = SlotWeights is { Count: var wc } && wc >= n
-                ? PickWeighted(n, SlotWeights)
-                : PickUniform(n);
+            var gNs = GetReplacementGroup();
+            var srcNs = NobleModSoundEvalContext.CurrentAudioSource;
+            var pick = RollSlot_NonSticky(gNs, srcNs, n, SlotWeights);
             var slotMatch = pick == s;
             TryLogSoundPickEachMatch(slotMatch);
             return slotMatch;
@@ -688,7 +795,9 @@ public sealed class NobleModRandomSlotCondition : Condition
                     RefreshStickySlotWarmup(g, n, SlotWeights);
                 st.Initialized = true;
                 st.ClipFingerprint = fp;
-                st.ChosenPick = GetStickySlotWarmupPick(g, n, SlotWeights);
+                st.ChosenPick = RollSlot_Sticky(g, src, len, n, SlotWeights);
+                if (g != null && SlotStickyWarmupByGroup.TryGetValue(g, out var swAttach))
+                    swAttach.SlotPick = st.ChosenPick;
                 st.LastTime = t;
                 st.LastStickyAttachFrame = Time.frameCount;
                 if (logSticky)
@@ -721,9 +830,7 @@ public sealed class NobleModRandomSlotCondition : Condition
         {
             if (logSticky)
                 TryLogStickyTransition(src, "slot", attach: false, detail: "boucle détectée (nouveau tirage slot)");
-            st.ChosenPick = SlotWeights is { Count: var wc3 } && wc3 >= n
-                ? PickWeighted(n, SlotWeights)
-                : PickUniform(n);
+            st.ChosenPick = RollSlot_Sticky(g, src, len, n, SlotWeights);
             if (g != null && SlotStickyWarmupByGroup.TryGetValue(g, out var sw))
                 sw.SlotPick = st.ChosenPick;
             if (logSticky)

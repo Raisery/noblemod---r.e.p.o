@@ -2,6 +2,8 @@ using System.IO;
 using BepInEx;
 using BepInEx.Logging;
 using HarmonyLib;
+using NobleMod.Multiplayer;
+using NobleMod.Patches;
 using NobleMod.SoundPack;
 
 namespace NobleMod;
@@ -35,6 +37,12 @@ public sealed class Plugin : BaseUnityPlugin
 
             Harmony = new Harmony(PluginInfo.Guid);
             Harmony.PatchAll();
+
+            // Patch tolerant aux changements d'API SoundAPI (resolution par nom, install manuel pour ne pas
+            // casser PatchAll si la methode cible bouge dans une future version de loaforcsSoundAPI).
+            SoundApiReplacementSeedPatch.TryInstall(Harmony);
+
+            NobleModSoundSyncNet.Initialize();
 
             Logger.LogInfo($"{PluginInfo.Name} v{PluginInfo.Version} loaded.");
 
