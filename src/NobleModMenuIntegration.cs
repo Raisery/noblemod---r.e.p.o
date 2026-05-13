@@ -1,5 +1,7 @@
 using BepInEx.Logging;
+using NobleMod.Replacers;
 using System;
+using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
 
@@ -21,6 +23,7 @@ internal static class NobleModMenuIntegration
     private static object _toggleSpawn;
     private static object _toggleSoundPackConditions;
     private static object _toggleLogSoundPickEachMatch;
+    private static readonly List<KeyValuePair<string, object>> _replacerToggles = new();
     private static bool _methodsResolved;
 
     private static void ClearNoblePopupCache()
@@ -29,6 +32,7 @@ internal static class NobleModMenuIntegration
         _toggleSpawn = null;
         _toggleSoundPackConditions = null;
         _toggleLogSoundPickEachMatch = null;
+        _replacerToggles.Clear();
     }
 
     /// <summary>
@@ -382,6 +386,25 @@ internal static class NobleModMenuIntegration
                 setState3?.Invoke(_toggleLogSoundPickEachMatch, new object[] { ModConfig.LogSoundPickEachMatch.Value, false });
             }
 
+            // Resynchronisation des toggles replacers : si l'utilisateur a edite le .cfg a la main,
+            // on reflete la valeur courante du ConfigEntry sur le toggle UI.
+            foreach (var kv in _replacerToggles)
+            {
+                if (!IsUnityObjAlive(kv.Value))
+                    continue;
+                var setStateR = kv.Value.GetType().GetMethod("SetState", new[] { typeof(bool), typeof(bool) });
+                if (setStateR == null)
+                    continue;
+                var entries = ReplacerToggleRegistry.SnapshotEntries();
+                foreach (var e in entries)
+                {
+                    if (!string.Equals(e.FilePath, kv.Key, StringComparison.OrdinalIgnoreCase))
+                        continue;
+                    setStateR.Invoke(kv.Value, new object[] { e.Entry.Value, false });
+                    break;
+                }
+            }
+
             // false = remplace la page courante (Parametres) en Inactive : sinon le menu derriere reste
             // interactif (hover/clics) et vole les raycasts des toggles NobleMod.
             var open = _popup.GetType().GetMethod("OpenPage", new[] { typeof(bool) });
@@ -395,8 +418,19 @@ internal static class NobleModMenuIntegration
 
     private static void EnsureNoblePopup()
     {
+        // Les packs peuvent etre charges apres NobleMod.Awake ; on re-scanne avant d'utiliser le cache UI.
+        ReplacerToggleRegistry.DiscoverAlreadyLoadedPacks();
+        var replacerCount = ReplacerToggleRegistry.SnapshotEntries().Count;
+
         if (IsUnityObjAlive(_popup) && IsUnityObjAlive(GetRepoPopupMenuPage(_popup)))
-            return;
+        {
+            // Popup creee alors qu'aucun replacer n'etait encore decouvert (reflection LoadedPacks echouait ou timing) :
+            // on detruit le cache pour recreer les toggles dynamiques.
+            if (replacerCount > 0 && _replacerToggles.Count == 0)
+                ClearNoblePopupCache();
+            else
+                return;
+        }
 
         ClearNoblePopupCache();
 
@@ -485,6 +519,45 @@ internal static class NobleModMenuIntegration
             }) as Component;
         _toggleLogSoundPickEachMatch = toggleLogSoundPickComp;
         RegisterPopupScrollElement(_popup, addToScroll, toggleLogSoundPickComp, topPad: 0f, bottomPad: 0f);
+
+        // Toggles dynamiques : un par fichier JSON replacer du pack NobleMod (decouverts par SoundAPI).
+        // Si SoundAPI n'a pas encore appele AddLoadedPack (cas tres precoce), la liste est vide et
+        // la section est tout simplement absente jusqu'a la prochaine reconstruction de la popup.
+        _replacerToggles.Clear();
+        var replacerEntries = ReplacerToggleRegistry.SnapshotEntries();
+        var first = true;
+        foreach (var entry in replacerEntries)
+        {
+            var capturedEntry = entry;
+            var label = $"Replacer : {entry.DisplayName}";
+            var toggleComp = _miCreateToggle.Invoke(
+                null,
+                new object[]
+                {
+                    label,
+                    new Action<bool>(v =>
+                    {
+                        capturedEntry.Entry.Value = v;
+                        SaveCfg();
+                        if (!v)
+                        {
+                            var stopped = ReplacerToggleRegistry.StopActiveSourcesFor(capturedEntry.FilePath);
+                            if (stopped > 0)
+                                Plugin.Log?.LogInfo($"[NobleMod] Replacer '{capturedEntry.DisplayName}' desactive : {stopped} source(s) audio coupee(s).");
+                        }
+                    }),
+                    scroller,
+                    Vector2.zero,
+                    "ON",
+                    "OFF",
+                    entry.Entry.Value
+                }) as Component;
+            if (toggleComp == null)
+                continue;
+            _replacerToggles.Add(new KeyValuePair<string, object>(entry.FilePath, toggleComp));
+            RegisterPopupScrollElement(_popup, addToScroll, toggleComp, topPad: first ? 14f : 0f, bottomPad: 0f);
+            first = false;
+        }
 
         var closeBtn = _miCreateButton.Invoke(
             null,

@@ -4,6 +4,7 @@ using BepInEx.Logging;
 using HarmonyLib;
 using NobleMod.Multiplayer;
 using NobleMod.Patches;
+using NobleMod.Replacers;
 using NobleMod.SoundPack;
 
 namespace NobleMod;
@@ -34,13 +35,20 @@ public sealed class Plugin : BaseUnityPlugin
             ModConfig.Bind(Config);
             NobleModSoundPackConditionBootstrap.TryRegister(Logger);
             LevelEnemyOverrideBank.Initialize(Logger);
+            ReplacerToggleRegistry.Bootstrap(Config, Logger);
 
             Harmony = new Harmony(PluginInfo.Guid);
             Harmony.PatchAll();
 
-            // Patch tolerant aux changements d'API SoundAPI (resolution par nom, install manuel pour ne pas
+            // Patches tolerants aux changements d'API SoundAPI (resolution par nom, install manuel pour ne pas
             // casser PatchAll si la methode cible bouge dans une future version de loaforcsSoundAPI).
             SoundApiReplacementSeedPatch.TryInstall(Harmony);
+            SoundPackLoadedDiscoveryPatch.TryInstall(Harmony);
+            ReplacerToggleFilterPatch.TryInstall(Harmony);
+
+            // Rattrapage : SoundAPI charge ses packs dans son Awake, avant NobleMod.Awake (BepInDependency).
+            // Le patch postfix sur AddLoadedPack ne couvre que les packs charges *apres* nous (rare).
+            ReplacerToggleRegistry.DiscoverAlreadyLoadedPacks();
 
             NobleModSoundSyncNet.Initialize();
 

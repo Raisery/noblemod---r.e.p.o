@@ -4,7 +4,7 @@ Mod BepInEx / Harmony pour REPO : **menu in-game** (MenuLib), **overrides de spa
 
 Auteur : **Raisery**
 
-**Dernière release documentée : 1.1.0** — **cohérence multijoueur des sons aléatoires** (pool partagé Photon via REPOLib `NetworkedEvent`, indexé par clé stable ; couvre conditions `NobleMod:random_slot` et tirages internes SoundAPI). Détail : [CHANGELOG.md](CHANGELOG.md).
+**Dernière release documentée : 1.1.1** — **toggles par fichier replacer** (menu NobleMod, config `[Replacers]`, découverte via `SoundReplacements`) ; **cohérence multijoueur des sons** (1.1.0). Détail : [CHANGELOG.md](CHANGELOG.md).
 
 **Historique des versions** : [CHANGELOG.md](CHANGELOG.md) (obligatoire pour suivre les changements entre releases). La **description courte** affichée sur Thunderstore est dans `thunderstore/manifest.json` ; la page mod Thunderstore utilise `thunderstore/README.md` (copiée dans le zip).
 
@@ -110,8 +110,9 @@ Paramètres du jeu → bouton **NOBLEMOD** (ou **NobleMod — réglages du mod**
 - **Spawn override** — active ou désactive le mapping JSON des mobs principaux par niveau.
 - **Conditions pack NobleMod (SoundAPI)** — enregistrement au démarrage des conditions C# NobleMod (`NobleMod:random_slot`, etc.) ; **redémarrage du jeu** pour appliquer ON/OFF.
 - **Log chaque son selectionne (random_slot)** — branche `LogSoundPickEachMatch` (très verbeux avec `update_every_frame` sur le humming chasseur).
+- **Replacer : `<nom_fichier>`** — un toggle par fichier JSON du pack NobleMod chargé par SoundAPI (ex. `noblemod`, `noblemod_headman`, `noblemod_hunter_hum`). OFF : les sons de ce fichier ne remplacent plus les sons vanilla ; tout `AudioSource` qui joue déjà un clip remplacé issu de ce fichier est **coupé instantanément** (`AudioSource.Stop()`), et le son vanilla reprend au prochain trigger naturel du jeu. **Strictement local** : le toggle n'est pas répliqué aux autres joueurs en multijoueur (le pool partagé de sync continue à fonctionner normalement).
 
-Les changements sont enregistrés dans `raisery.noblemod.cfg` via `Config.Save()`.
+Les changements sont enregistrés dans `raisery.noblemod.cfg` via `Config.Save()`. Les toggles **Replacer** correspondent à la section `[Replacers]` du `.cfg` (clés `Enable_<nom_fichier>`).
 
 ## Paquet Thunderstore
 

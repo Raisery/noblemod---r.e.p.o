@@ -1,0 +1,39 @@
+{
+  "replacements": [
+    {
+      "matches": [
+        "*:*:player hurt long01",
+        "*:*:player hurt long02",
+        "*:*:player hurt long03"
+      ],
+      "sounds": [
+        {
+          "sound": "shorts/bruuhh.ogg",
+          "weight": 100
+        }
+      ]
+    },
+    {
+      "matches": ["*:*:player hurt short01", "*:*:player hurt short02"],
+      "sounds": [
+        {
+          "sound": "shorts/anime-ahh.ogg",
+          "weight": 100
+        }
+      ]
+    },
+    {
+      "matches": [
+        "*:*:player death explosion01",
+        "*:*:player death explosion02",
+        "*:*:player death explosion03"
+      ],
+      "sounds": [
+        {
+          "sound": "shorts/fahhhhh.ogg",
+          "weight": 100
+        }
+      ]
+    }
+  ]
+}

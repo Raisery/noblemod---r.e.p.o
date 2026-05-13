@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.1.1] - 2026-05-13
+
+### Ajouté
+
+- **Interrupteurs ON/OFF par fichier replacer** (menu NobleMod, section « Replacer : … »), modifiables en pleine partie. Un `ConfigEntry<bool>` par fichier sous `[Replacers]` (`Enable_<nom_fichier>`, défaut `true`).
+  - **Filtrage runtime** : postfix Harmony sur `SoundReplacementHandler.TryGetReplacementClip` — si le toggle du fichier source est OFF, le remplacement est annulé (`__result = false`) et le son vanilla s’applique aux prochains déclenchements.
+  - **Coupure locale** : passage OFF → `AudioSource.Stop()` sur les sources suivies pour ce fichier ; pas de réplication réseau (le pool multijoueur continue de tourner pour les autres joueurs).
+- **Sound pack** : extension des replacers (`headman.json`, `hunter.json`, `noblemod.json`, `object-destroy.json`, `player.json` dans `replacers/`) — chaque fichier apparaît automatiquement comme toggle au prochain démarrage après installation.
+
+### Technique
+
+- **Découverte fiable** : SoundAPI ne remplit pas `SoundPack.ReplacementCollections` pour les JSON sous `replacers/` ; le scan parcourt le dictionnaire interne **`SoundPackDataHandler.SoundReplacements`** et regroupe par `SoundReplacementCollection.FilePath` sous le dossier de `NobleMod.dll`.
+- **Correctifs** : réflexion `LoadedPacks` avec getter interne ; postfix `AddLoadedPack` avec type `SoundPack` qualifié (conflit de namespace `NobleMod.SoundPack`) ; reconstruction de la popup menu si des replacers sont découverts après la première construction du cache.
+
 ## [1.1.0] - 2026-05-13
 
 ### Ajouté

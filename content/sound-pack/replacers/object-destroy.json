@@ -1,0 +1,20 @@
+{
+  "replacements": [
+    {
+      "matches": [
+        "*:*:Plastic Big - Destroy01",
+        "*:*:Plastic Big - Destroy02",
+        "*:*:Plastic Big - Destroy03",
+        "*:*:Plastic Medium - Destroy01",
+        "*:*:Plastic Medium - Destroy02",
+        "*:*:Plastic Medium - Destroy03"
+      ],
+      "sounds": [
+        {
+          "sound": "shorts/nils-short.ogg",
+          "weight": 100
+        }
+      ]
+    }
+  ]
+}
